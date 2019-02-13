@@ -3,7 +3,7 @@ from telegram.ext import Updater
 import logging
 from telegram.ext import CommandHandler
 import datetime
-import secter_data
+import secret_data
 
 logging.basicConfig(format='%(asctime)s - %(name)s - %(levelname)s - %(message)s',
                      level=logging.INFO)
@@ -34,7 +34,7 @@ weekdays = {1:[datetime.time(15,00,0) ],
             datetime.time(14,00,0),   
             datetime.time(19,00,0) ]}
 
-TOKEN = secter_data.get_token
+TOKEN = secret_data.get_token
 
 
 def callback_get_time(bot,update):
