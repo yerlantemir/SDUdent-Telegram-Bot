@@ -2,7 +2,7 @@ import requests
 from bs4 import BeautifulSoup
 
 USERNAME = "170103024"
-PASSWORD = "aapbxzam199"
+PASSWORD = "aapbxzam1999"
 
 LOGIN_URL     = "https://my.sdu.edu.kz/"
 DASHBOARD_URL = "https://my.sdu.edu.kz/index.php?mod=schedule"
