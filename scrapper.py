@@ -31,4 +31,3 @@ def get_schedule_html():
     return BeautifulSoup(result.content,'html.parser')
 
 soup = get_schedule_html()
-print(soup)
