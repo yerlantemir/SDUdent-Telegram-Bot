@@ -1,14 +1,17 @@
 import telegram
 from telegram.ext import Updater
 import logging
-from telegram.ext import CommandHandler
+from telegram.ext import CommandHandler,MessageHandler,Filters,ConversationHandler
 import datetime
-import secret_data
+import secret_data as sd
 
 logging.basicConfig(format='%(asctime)s - %(name)s - %(levelname)s - %(message)s',
                      level=logging.INFO)
 
+username = ''
+password = ''
 
+USERNAME,PASSWORD,GENDER = range(3)
 weekdays = {1:[datetime.time(15,00,0) ],
             
             2:[datetime.time(10,00,0),    
@@ -34,7 +37,6 @@ weekdays = {1:[datetime.time(15,00,0) ],
             datetime.time(14,00,0),   
             datetime.time(19,00,0) ]}
 
-TOKEN = secret_data.get_token
 
 
 def callback_get_time(bot,update):
@@ -81,14 +83,53 @@ def closest_index(time,weekday):
 
 
 
+def start(bot,update):
+    update.message.reply_text('Enter your login:')
+
+    return USERNAME
+    
+
+def get_username(bot,update):
+    global username
+    username = update.message.text
+    update.message.reply_text('Now,enter your password:')
+    
+    return PASSWORD
+
+def get_password(bot,update):
+    global password
+    password = update.message.text
+    
+    return 
+
+def cancel(bot,update):
+    
+    return ConversationHandler.END
 
 
 def main():
-  
+
+    TOKEN = sd.get_token()
+
     updater = Updater(token = TOKEN)
     dp = updater.dispatcher
+    
+    conv_handler = ConversationHandler(
+        entry_points=[CommandHandler('start', start)],
+
+        states={
+            
+            USERNAME: [MessageHandler(Filters.text, get_username)],
+
+            PASSWORD: [MessageHandler(Filters.text, get_password)]
+
+        },
+
+        fallbacks=[CommandHandler('cancel', cancel)]
+    )
 
     dp.add_handler(CommandHandler('next',callback_get_time))
+    dp.add_handler(conv_handler)    
     updater.start_polling()
 
 
