@@ -5,6 +5,7 @@ from telegram.ext import CommandHandler,MessageHandler,Filters,ConversationHandl
 import datetime
 import secret_data as sd
 import scrapper
+from selenium.common.exceptions import NoSuchElementException
 
 logging.basicConfig(format='%(asctime)s - %(name)s - %(levelname)s - %(message)s',
                      level=logging.INFO)
@@ -14,7 +15,7 @@ password = ''
 
 USERNAME,PASSWORD,GENDER = range(3)
 
-
+weekdays = {}
 
 
 def callback_get_time(bot,update):
@@ -86,12 +87,22 @@ def get_username(bot,update):
 
 
 def get_password(bot,update):
-    
+
     global password
     password = update.message.text
     update.message.reply_text('Wait about 10 seconds,we are getting data from portal')
 
-    schedule = scrapper.Schedule(username,password)
+    try:
+    
+        schedule = scrapper.Schedule(username,password)
+
+    except NoSuchElementException:
+        print('kek')
+        update.message.reply_text('Your entered incorrect data,try again:')
+        update.message.reply_text('Enter your login:')
+        
+        return USERNAME
+
     global weekdays
     weekdays = schedule.get_schedule_data()
 
