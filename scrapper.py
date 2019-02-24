@@ -1,33 +1,97 @@
-import requests
-from lxml import html
+from selenium import webdriver
 import secret_data as sd
+from time import sleep
 from bs4 import BeautifulSoup
+import datetime
 
-def get_schedule_html():
+username = sd.get_login()
+password = sd.get_password()
 
-    name = sd.get_login()
-    password = sd.get_password()
+driver = webdriver.Firefox()
 
-    payload = {"username": name, "password" : password, "LogIn":" Log in "}
-    session_requests = requests.session()
+driver.get('https://my.sdu.edu.kz/')
 
-    login_url = "https://my.sdu.edu.kz/"
-    result = session_requests.get(login_url)
+class Subject:
 
-    tree = html.fromstring(result.text)
-    auth_token = list(set(tree.xpath("//input[@name='LogIn']/@value")))[0]
+    def __init__(self,title,teacher_name,room,weekday,timeAtt):
+        
+        self.title = title
+        self.teacher_name = teacher_name
+        self.room = room
+        self.weekday = weekday
+        self.timeAtt = timeAtt.split(':')
+        self.time = datetime.time(int(self.timeAtt[0]),int(self.timeAtt[1]),00)
+        
+    
 
-    result = session_requests.post(
-        login_url,
-        data=payload,
-        headers = dict(referer = login_url)
-    )
+    def __lt__ (self, other):
+        
+        if self.weekday == other.weekday:
+            return self.time < other.time
+        return self.weekday < other.weekday
 
-    url = 'https://my.sdu.edu.kz/index.php?mod=schedule'
-    result = session_requests.get(url,headers = dict(referer = url))
+    def __eq__ (self, other):
+        return self.weekday == other.weekday and self.time == other.time
 
-    tree = html.fromstring(result.content)
+    def __repr__(self):
+        return '{},{},{},{},{}'.format(self.title,self.teacher_name,self.room,self.weekday,self.time)
 
-    return BeautifulSoup(result.content,'html.parser')
 
-soup = get_schedule_html()
+def login():
+    global driver
+    driver.find_element_by_id("username").send_keys(username)
+    driver.find_element_by_id("password").send_keys(password)
+    driver.find_element_by_class_name("q-button").click()
+
+def get_to_schedule():
+    login()
+    
+    global driver
+    driver.find_element_by_css_selector(".leftLinks a[href^='?mod=schedule'] ").click()
+    sleep(2)
+    html = driver.execute_script("return document.getElementsByTagName('html')[0].innerHTML")
+    return html
+    
+
+def get_schedule_data():
+    
+    html = get_to_schedule()
+    soup = BeautifulSoup(html,'lxml')
+    
+    lists = soup.find('div',id='div_results').find_all('tr')
+    subjects = []
+
+    #i = time
+    #j = day
+    
+    for i in range(1,len(lists)):
+        
+        tds = lists[i].find_all('td')
+
+        for j in range(1,len(tds)):
+            
+            span = tds[j].find('span')
+
+            if(len(span) == 1):
+                continue
+
+            
+            title = span.find('a')["title"]
+            
+            imgs = span.find_all('img')
+            teacher_name = imgs[0]["title"]
+            
+            room = imgs[1]["title"]
+            
+            time = tds[0].find('span').text
+            subject = Subject(title,teacher_name,room,j,time)
+            
+            subjects.append(subject)
+            
+    subjects = sorted(subjects)
+    for l in range(len(subjects)):
+        print(subjects[l])
+    
+
+get_schedule_data()
+
