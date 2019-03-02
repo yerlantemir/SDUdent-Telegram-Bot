@@ -42,28 +42,19 @@ class Schedule:
         self.driver = webdriver.Firefox()
 
         self.driver.get('https://my.sdu.edu.kz/')
-
-    def login(self):
-
-        
         self.driver.find_element_by_id("username").send_keys(self.username)
         self.driver.find_element_by_id("password").send_keys(self.password)
         self.driver.find_element_by_class_name("q-button").click()
-
-    def get_to_schedule(self):
-
-        self.login()
-        
         self.driver.find_element_by_css_selector(".leftLinks a[href^='?mod=schedule'] ").click()
         sleep(2)
-        html = self.driver.execute_script("return document.getElementsByTagName('html')[0].innerHTML")
-        return html
+        self.html = self.driver.execute_script("return document.getElementsByTagName('html')[0].innerHTML")
         
+
+
 
     def get_schedule_data(self):
         
-        html = self.get_to_schedule()
-        soup = BeautifulSoup(html,'lxml')
+        soup = BeautifulSoup(self.html,'lxml')
         
         lists = soup.find('div',id='div_results').find_all('tr')
         weekdays = {1:[],
@@ -103,7 +94,5 @@ class Schedule:
         return weekdays               
                 
     
-    
-
 
 
