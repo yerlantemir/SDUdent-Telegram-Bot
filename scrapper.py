@@ -45,16 +45,38 @@ class Schedule:
         self.driver.find_element_by_id("username").send_keys(self.username)
         self.driver.find_element_by_id("password").send_keys(self.password)
         self.driver.find_element_by_class_name("q-button").click()
-        self.driver.find_element_by_css_selector(".leftLinks a[href^='?mod=schedule'] ").click()
-        sleep(2)
-        self.html = self.driver.execute_script("return document.getElementsByTagName('html')[0].innerHTML")
+       
         
 
+    def get_grades_data(self):
+
+        self.driver.find_element_by_css_selector(".leftLinks a[href^='?mod=grades'] ").click()
+        sleep(2)
+        html = self.driver.execute_script("return document.getElementsByTagName('html')[0].innerHTML")        
+        soup = BeautifulSoup(html,'lxml')
+
+        lists = soup.find('div',id='divShowStudGrades').find_all('tr')[2:-1]
+
+        grades = {}
+
+        
+        
+        for index in range(len(lists)) :
+
+            tds = lists[index].find_all('td')
+            name = tds[4].text
+            grade = tds[8].text.strip()
+            grades[index] = {name:grade}
+        
+        return grades
 
 
     def get_schedule_data(self):
         
-        soup = BeautifulSoup(self.html,'lxml')
+        self.driver.find_element_by_css_selector(".leftLinks a[href^='?mod=schedule'] ").click()
+        sleep(2)
+        html = self.driver.execute_script("return document.getElementsByTagName('html')[0].innerHTML")
+        soup = BeautifulSoup(html,'lxml')
         
         lists = soup.find('div',id='div_results').find_all('tr')
         weekdays = {1:[],
@@ -64,8 +86,7 @@ class Schedule:
                     5:[],
                     6:[]}
 
-        #i = time
-        #j = day
+        
         
         for i in range(1,len(lists)):
             
@@ -94,5 +115,6 @@ class Schedule:
         return weekdays               
                 
     
-
+sc = Schedule('170103024','aapbxzam1999')
+sc.get_grades_data()
 
