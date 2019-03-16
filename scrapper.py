@@ -34,24 +34,37 @@ class Subject:
 class Schedule:
 
     
-    def __init__(self,username,password):
+    def __init__(self):
 
-        self.username = username
-        self.password = password
-
+        self.username = ''
+        self.password = ''
+        self.loginned = False
         self.driver = webdriver.Firefox()
-
         self.driver.get('https://my.sdu.edu.kz/')
+        
+    
+    def set_username(self,username):
+        self.username = username
+    
+    
+    def set_password(self,password):
+        self.password = password
+    
+    
+    def login(self):
+        
         self.driver.find_element_by_id("username").send_keys(self.username)
         self.driver.find_element_by_id("password").send_keys(self.password)
         self.driver.find_element_by_class_name("q-button").click()
-       
         
-
+        self.loginned = True
+    
     def get_grades_data(self):
 
-        self.driver.find_element_by_css_selector(".leftLinks a[href^='?mod=grades'] ").click()
+        if not self.loginned:
+            self.login()
         sleep(2)
+        self.driver.find_element_by_css_selector(".leftLinks a[href^='?mod=grades'] ").click()
         html = self.driver.execute_script("return document.getElementsByTagName('html')[0].innerHTML")        
         soup = BeautifulSoup(html,'lxml')
 
@@ -66,7 +79,7 @@ class Schedule:
             tds = lists[index].find_all('td')
             name = tds[4].text
             grade = tds[8].text.strip()
-            grades[index] = {name:grade}
+            grades[index] = {'name':name,'grade':grade}
         
         return grades
 
@@ -115,6 +128,5 @@ class Schedule:
         return weekdays               
                 
     
-sc = Schedule('170103024','aapbxzam1999')
-sc.get_grades_data()
+
 
