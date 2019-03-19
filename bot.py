@@ -3,14 +3,12 @@ from telegram.ext import Updater
 import logging
 from telegram.ext import CommandHandler,MessageHandler,Filters,ConversationHandler
 import datetime
-import secret_data as sd
 import scrapper
 import time
-from pprint import pprint
+from Facade import BotFacade
 from selenium.common.exceptions import NoSuchElementException
 
-logging.basicConfig(format='%(asctime)s - %(name)s - %(levelname)s - %(message)s',
-                     level=logging.INFO)
+
 
 user = {}
 
@@ -154,9 +152,9 @@ def notify_grades(bot,job):
 
 def main():
 
-    TOKEN = sd.get_token()
+    facade = BotFacade()
+    updater = facade.getBot()
 
-    updater = Updater(token = TOKEN)
     dp = updater.dispatcher
 
     dp.add_handler(CommandHandler('start',start))
@@ -176,6 +174,7 @@ def main():
 
 
 
+
 def send_message(bot,chat_id,send_text):
     try:
         bot.send_message(chat_id = chat_id,text = send_text,parse_mode = 'HTML')
@@ -183,14 +182,20 @@ def send_message(bot,chat_id,send_text):
         print('No such chat id')
 
 
+
+
 def get_chat_id(update):
     return update.message.chat_id
+
+
 
 
 def get_user_data(chat_id):
     username = user[chat_id]['username']
     password = user[chat_id]['password']
     return username,password
+
+
 
 
 def get_update_in_grades(old_grades,new_grades):
@@ -207,6 +212,9 @@ def get_update_in_grades(old_grades,new_grades):
             updates.append(i)
 
     return updates
+
+
+
 
 
 def callback_get_time(bot,update):
@@ -240,6 +248,9 @@ def callback_get_time(bot,update):
     
     
 
+
+
+
 def closest_index(time,weekday,chat_id):
 
     my_time_minutes = time.hour*60 + time.minute
@@ -260,6 +271,8 @@ def closest_index(time,weekday,chat_id):
         
 
     return indexOfMin
+
+
 
 
 if __name__ == '__main__':
