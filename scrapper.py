@@ -60,6 +60,8 @@ class Schedule:
         self.driver.find_element_by_id("username").send_keys(self.username)
         self.driver.find_element_by_id("password").send_keys(self.password)
         self.driver.find_element_by_class_name("q-button").click()
+        self.driver.find_element_by_css_selector(".leftLinks a[href^='?mod=schedule'] ").click()
+
     
     def get_grades_data(self):
         
@@ -87,7 +89,6 @@ class Schedule:
 
     def get_schedule_data(self):
         
-        self.driver.find_element_by_css_selector(".leftLinks a[href^='?mod=schedule'] ").click()
         sleep(2)
         html = self.driver.execute_script("return document.getElementsByTagName('html')[0].innerHTML")
         soup = BeautifulSoup(html,'lxml')

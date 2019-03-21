@@ -11,14 +11,7 @@ from database import Database
 import ast
 
 
-
-
-
 db = Database()
-
-
-
-
 
 
 def start(bot,update):
@@ -75,9 +68,11 @@ def save_schedule(bot,update,job_queue):
     send_message(bot,chat_id,'We are getting data from portal,wait about 10 seconds')
     
     try:
+        
         sc = Schedule(username,password)
 
     except NoSuchElementException:
+
         send_message(bot,chat_id,'Your entered incorrect username/password,so we could not get your schedule,try again!')
         return
     
