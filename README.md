@@ -6,7 +6,8 @@
 <div align="center">Bot which sends notification to SDUdents</div>
 
 ### Project Description: 📄
-A bot that notifies SDU students about new grades in portal 
+A bot that notifies SDU students about new grades in portal.
+Idea belongs to Aidar Nugmanoff(https://github.com/nugmanoff)
 
 ### Problem: 🥶
 After passing midterm exams students everytime enters to portal (my.sdu.edu.kz) to check, if there is new grade or not 
@@ -21,7 +22,7 @@ After passing midterm exams students everytime enters to portal (my.sdu.edu.kz) 
     - [X] <del>Использование Design Patterns</del>
     - [X] <del>Следовать принципам OOP</del>
     - [X] <del>Использование git</del>
-        Задеплоить на какой-то hosting (Digital Ocean, AWS, Heroku)
+    -  Задеплоить на какой-то hosting (Digital Ocean, AWS, Heroku)
 
 ### Team: 🌍
 * [Yerlan Temir](http://github.com/YerlanTemir/) 🇰🇿
