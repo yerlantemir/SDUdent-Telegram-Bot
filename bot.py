@@ -68,7 +68,7 @@ def save_schedule(bot,update,job_queue):
     send_message(bot,chat_id,'We are getting data from portal,wait about 10 seconds')
     
     try:
-        
+
         sc = Schedule(username,password)
 
     except NoSuchElementException:
@@ -194,7 +194,7 @@ def callback_get_time(bot,update):
         days = 1
         weekday = 1
 
-    indexOfMin = closest_index(time,weekday,chat_id,weekdays)
+    indexOfMin = closest_index(time,weekday,weekdays)
     
     if days > 0:
 
@@ -217,7 +217,7 @@ def callback_get_time(bot,update):
 
 
 
-def closest_index(time,weekday,chat_id,weekdays):
+def closest_index(time,weekday,weekdays):
 
     my_time_minutes = time.hour*60 + time.minute
     min = 24*60
