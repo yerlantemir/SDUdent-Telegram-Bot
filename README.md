@@ -6,8 +6,8 @@
 <div align="center">Bot which sends notification to SDUdents</div>
 
 ### Project Description: 📄
-A bot that notifies SDU students about new grades in portal.
-Idea belongs to Aidar Nugmanoff(https://github.com/nugmanoff)
+<p>A bot that notifies SDU students about new grades in portal.</p>
+<p>Idea belongs to Aidar Nugmanoff(https://github.com/nugmanoff)</p>
 
 ### Problem: 🥶
 After passing midterm exams students everytime enters to portal (my.sdu.edu.kz) to check, if there is new grade or not 
