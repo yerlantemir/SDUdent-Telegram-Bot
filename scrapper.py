@@ -3,8 +3,9 @@ import secret_data as sd
 from time import sleep
 from bs4 import BeautifulSoup
 import datetime
-
-
+import json
+from json import JSONEncoder
+from JsonUtils import DateTimeDecoder,DateTimeEncoder
 
 
 class Subject:
@@ -16,55 +17,55 @@ class Subject:
         self.room = room
         self.timeAtt = timeAtt.split(':')
         self.time = datetime.time(int(self.timeAtt[0]),int(self.timeAtt[1]),00)
-        
+        self.time = json.loads(json.dumps(self.time,cls = DateTimeEncoder),cls = DateTimeDecoder)
     
+    def json_serial(self,obj):
 
+        if isinstance(obj, (datetime.datetime, datetime.time)):
+            return obj.isoformat()
+        raise TypeError ("Type %s not serializable" % type(obj))
+
+    
+    
     def __lt__ (self, other):
         return self.time < other.time
         
+    def __repr__(self):
+        return '{},{},{},{}'.format(self.title,self.teacher_name,self.room,self.time)
 
     def __eq__ (self, other):
         return self.time == other.time
 
-    def __repr__(self):
-        return '{},{},{},{}'.format(self.title,self.teacher_name,self.room,self.time)
 
+class SubjectEncoder(json.JSONEncoder):
 
+    def default(self, o):
+        if isinstance(o, Subject):
+            return o.__dict__
+        return json.JSONEncoder.default(self, o)
 
 class Schedule:
 
     
-    def __init__(self):
+    def __init__(self,username,password):
 
-        self.username = ''
-        self.password = ''
-        self.loginned = False
-        self.driver = webdriver.Firefox()
-        self.driver.get('https://my.sdu.edu.kz/')
-        
-    
-    def set_username(self,username):
         self.username = username
-    
-    
-    def set_password(self,password):
         self.password = password
-    
+        self.login()        
     
     def login(self):
-        
+
+        self.driver = webdriver.Firefox()
+        self.driver.get('https://my.sdu.edu.kz/')
         self.driver.find_element_by_id("username").send_keys(self.username)
         self.driver.find_element_by_id("password").send_keys(self.password)
         self.driver.find_element_by_class_name("q-button").click()
-        
-        self.loginned = True
     
     def get_grades_data(self):
-
-        if not self.loginned:
-            self.login()
-        sleep(2)
+        
         self.driver.find_element_by_css_selector(".leftLinks a[href^='?mod=grades'] ").click()
+        sleep(2)
+
         html = self.driver.execute_script("return document.getElementsByTagName('html')[0].innerHTML")        
         soup = BeautifulSoup(html,'lxml')
 
@@ -121,7 +122,7 @@ class Schedule:
                 room = imgs[1]["title"]
                 
                 time = tds[0].find('span').text
-                subject = Subject(title,teacher_name,room,time)
+                subject = json.dumps(Subject(title,teacher_name,room,time),cls=SubjectEncoder)
 
                 weekdays[j].append(subject) 
 
