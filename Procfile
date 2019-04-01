@@ -1,1 +1,1 @@
-bot: python3 setup.py
+worker: python setup.py $PORT
