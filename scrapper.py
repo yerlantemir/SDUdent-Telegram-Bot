@@ -60,12 +60,11 @@ class Schedule:
         self.driver.find_element_by_id("username").send_keys(self.username)
         self.driver.find_element_by_id("password").send_keys(self.password)
         self.driver.find_element_by_class_name("q-button").click()
-        self.driver.find_element_by_css_selector(".leftLinks a[href^='?mod=schedule'] ").click()
+        self.driver.find_element_by_css_selector(".leftLinks a[href^='?mod=grades'] ").click()
 
     
     def get_grades_data(self):
         
-        self.driver.find_element_by_css_selector(".leftLinks a[href^='?mod=grades'] ").click()
         sleep(2)
 
         html = self.driver.execute_script("return document.getElementsByTagName('html')[0].innerHTML")        
@@ -81,8 +80,12 @@ class Schedule:
 
             tds = lists[index].find_all('td')
             name = tds[4].text
-            grade = tds[8].text.strip()
-            grades[index] = {'name':name,'grade':grade}
+            att = tds[7].text.strip()
+            mid1 = tds[8].text.strip()
+            mid2 = tds[9].text.strip()
+            fin = tds[10].text.strip()
+            avg = tds[11].text.strip()
+            grades[index] = {'name':name,'att':att,'grade':{'1st midterm':mid1,'2nd midterm':mid2,'final':fin,'average':avg}}
         
         return grades
 

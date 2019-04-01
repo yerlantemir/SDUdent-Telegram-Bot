@@ -2,7 +2,7 @@
     <img width="200" src="logo.png">
 </p>
 
-<h1 align="center">Indigo</h1>
+<h1 align="center">SDUdent telegram bot</h1>
 <div>Bot which sends notification to SDUdents</div>
 
 ### Project Description: 📄

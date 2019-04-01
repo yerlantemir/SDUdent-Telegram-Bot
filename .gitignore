@@ -4,3 +4,5 @@ secret_data.py
 geckodriver.log
 
 __pycache__
+
+key.key
