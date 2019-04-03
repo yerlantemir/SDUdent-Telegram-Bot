@@ -9,6 +9,10 @@ from selenium.common.exceptions import NoSuchElementException
 from database import Database
 import ast
 import AESencoder as crpt
+import os
+
+
+
 db = Database()
 entered = False
 
@@ -16,7 +20,7 @@ def start(bot,update):
     
     chat_id = get_chat_id(update)
     global db
-    send_message(bot,chat_id,"Hi SDUdent!!👋🏼"\
+    send_message(bot,chat_id,"Hi SDUdent!!"\
                             "\n" \
                             "\n" \
                             "Tell me your username and password from portal and I will notify you about new grades!"\
@@ -189,8 +193,25 @@ def help(bot, update):
 
 
 def main():
-
-    facade = BotFacade()
+    
+    TOKEN = os.getenv("TOKEN")
+    mode = os.getenv("MODE")
+    print('TOKEN',TOKEN)
+    print('mode',mode)
+    if mode == "dev":
+        
+        def run(updater):
+            updater.start_polling()
+    
+    elif mode == "prod":
+        
+        def run(updater):
+            PORT = int(os.environ.get("PORT","8443"))
+            HEROKU_APP_NAME = os.environ.get("HEROKU_APP_NAME")
+            updater.start_webhook(listen="0.0.0.0",port="PORT",url_path=TOKEN)
+            updater.bot.set_webhook("https://{}.herokuapp.com/{}".format(HEROKU_APP_NAME, TOKEN))
+    
+    facade = BotFacade(TOKEN)
     updater = facade.getBot()
     dp = updater.dispatcher
 
@@ -200,7 +221,7 @@ def main():
     dp.add_handler(CommandHandler('on',notify_on,pass_job_queue=True))
     dp.add_handler(CommandHandler('help', help))    
     dp.add_handler(MessageHandler(Filters.command, unknown_command))
-    updater.start_polling()
+    run(updater)
 
 
 

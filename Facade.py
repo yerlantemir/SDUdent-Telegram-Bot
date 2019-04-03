@@ -11,8 +11,7 @@ class _Logger(object):
 
 
 class _Bot(object):
-    def __init__(self):
-        TOKEN = sd.get_token()
+    def __init__(self,TOKEN):
         self.updater = Updater(token = TOKEN)
 
     def startPolling(self):
@@ -24,8 +23,8 @@ class _Bot(object):
 
 class BotFacade(object):
     
-    def __init__(self):
-        self.bot = _Bot()
+    def __init__(self,TOKEN):
+        self.bot = _Bot(TOKEN)
         self.logger = _Logger()
 
     def startBot(self):
