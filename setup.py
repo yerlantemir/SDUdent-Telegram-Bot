@@ -194,24 +194,8 @@ def help(bot, update):
 
 def main():
     
-    TOKEN = os.getenv("TOKEN")
-    mode = os.getenv("MODE")
-    print('TOKEN',TOKEN)
-    print('mode',mode)
-    if mode == "dev":
-        
-        def run(updater):
-            updater.start_polling()
     
-    elif mode == "prod":
-        
-        def run(updater):
-            PORT = int(os.environ.get("PORT","8443"))
-            HEROKU_APP_NAME = os.environ.get("HEROKU_APP_NAME")
-            updater.start_webhook(listen="0.0.0.0",port="PORT",url_path=TOKEN)
-            updater.bot.set_webhook("https://{}.herokuapp.com/{}".format(HEROKU_APP_NAME, TOKEN))
-    
-    facade = BotFacade(TOKEN)
+    facade = BotFacade()
     updater = facade.getBot()
     dp = updater.dispatcher
 
@@ -221,7 +205,7 @@ def main():
     dp.add_handler(CommandHandler('on',notify_on,pass_job_queue=True))
     dp.add_handler(CommandHandler('help', help))    
     dp.add_handler(MessageHandler(Filters.command, unknown_command))
-    run(updater)
+    updater.start_polling()
 
 
 

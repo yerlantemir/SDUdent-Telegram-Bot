@@ -6,6 +6,7 @@ RUN pip install beautifulsoup4
 RUN pip install pyrebase
 RUN pip install python-firebase
 RUN pip install requests
+RUn pip install telebot 
 
 RUN mkdir /app
 ADD . /app
