@@ -14,7 +14,7 @@ import os
 
 
 db = Database()
-entered = False
+
 
 def start(bot,update):
     
@@ -24,6 +24,7 @@ def start(bot,update):
                             "\n" \
                             "\n" \
                             "Tell me your username and password from portal and I will notify you about new grades!"\
+                            "\n" \
                             "\n" \
                             "Type /help to show list of avaible commands" \
                             "\n" \
@@ -41,7 +42,7 @@ def set_student_number(bot,update,args):
     
     except IndexError:
 
-        send_message(bot,chat_id,'Your foggot to enter your login(example: /set_username 170103024),please,try again')
+        send_message(bot,chat_id,'You have not entered(example: /set_sn 170103024),please,try again')
         return
 
     username = crpt.encrypt(username)
@@ -59,7 +60,7 @@ def set_password(bot,update,args):
 
     except IndexError:
 
-        send_message(bot,chat_id,'Your foggot to enter your password(example: /set_password 170103024),please,try again')
+        send_message(bot,chat_id,'You have not entered you password(example: /set_p 170103024),please,try again')
         return
 
     password = crpt.encrypt(password)
@@ -69,12 +70,13 @@ def set_password(bot,update,args):
 
 def notify_on(bot,update,job_queue):
     
-    global db,entered
+    global db
     chat_id = get_chat_id(update)
 
+    entered = db.get(["users",chat_id,"entered"])
     
     if(entered):
-        send_message(bot,chat_id,"We have already got your data,no need to call this command anymore")
+        send_message(bot,chat_id,"I have already got your data,no need to call this command anymore")
         return
 
     username = crpt.decrypt(db.get(["users",chat_id,"username"]).val())
@@ -82,23 +84,23 @@ def notify_on(bot,update,job_queue):
     
 
     if(username == '' or password == ''):
-        send_message(bot,chat_id,'You did not entered your login or password,please,firtsly use /set_username and /set_password methods')
+        send_message(bot,chat_id,'You have not entered your login or password,please,firtsly use /set_sn and /set_p commands')
         return
 
-    send_message(bot,chat_id,'We are getting data from portal,wait about 10 seconds')
+    send_message(bot,chat_id,'I am getting your grades data from portal,wait about 10 seconds')
     
     try:
 
         sc = Schedule(username,password)
-        entered = True
+        db.set_data(["users",chat_id,"entered"],True)
     except NoSuchElementException:
 
-        send_message(bot,chat_id,'Your entered incorrect username/password,so we could not get your schedule,try again!')
+        send_message(bot,chat_id,'You entered incorrect username/password,so we could not get your schedule,try again!')
         return
     
     grades_data = sc.get_grades_data()
     db.set_data(["users",chat_id,"grades_data"],grades_data)
-    send_message(bot,chat_id,'We got your schedule,you are welcome to use!')
+    send_message(bot,chat_id,'Yahooo! I did it! From now I will notify you about updated grades and absences!!')
     job_queue.run_repeating(notify_grades,600,context=(sc,chat_id))
 
 
@@ -130,10 +132,10 @@ def notify_grades(bot,job):
                         old = old_grades[updates[i][k]]['att']
                         print(old)
                         if old == '0':
-                            send_message(bot,chat_id,'Your absence count by subject \'{}\' was changed to {}'.format(subject_name,new))
+                            send_message(bot,chat_id,'Absence count by subject \"{}\" was changed to {}'.format(subject_name,new))
                         
                         else:
-                            send_message(bot,chat_id,'Your absence count by subject \'{}\' was changed from {} to {}'.format
+                            send_message(bot,chat_id,'Absence count by subject \"{}\" was changed from {} to {}'.format
                                 (subject_name,old,new))
                     else:
                         
@@ -141,10 +143,10 @@ def notify_grades(bot,job):
                         old = old_grades[updates[i][k]]['grade'][grade_states[i-1]]
                         print(new,old)
                         if old == '':
-                            send_message(bot,chat_id,'Your {} grade by subject \'{}\' : {}'.format(grade_states[i-1],subject_name,new))
+                            send_message(bot,chat_id,'{} grade by subject \"{}\" : {}'.format(grade_states[i-1],subject_name,new))
                         
                         else:
-                            send_message(bot,chat_id,'Your {} grade by subject \'{}\' was changed from {} to {}'.
+                            send_message(bot,chat_id,'{} grade by subject \"{}\" was changed from {} to {}'.
                                 format(grade_states[i-1],subject_name,old,new))
 
 
@@ -153,22 +155,22 @@ def notify_grades(bot,job):
 
     db.set_data(["users",chat_id,"grades_data"],new_grades)
 
-def get_schedule(bot,update,args):
+# def get_schedule(bot,update,args):
 
-    chat_id = get_chat_id(update)
+#     chat_id = get_chat_id(update)
     
-    try:
+#     try:
         
-        day = int(args[0])
+#         day = int(args[0])
 
-    except IndexError:
-        send_message(bot,chat_id,'Your foggot to enter day(example: /get_schedule 2 ,to get tuesday\'s schedule),please,try again')
-        return
-    global db
-    weekdays = db.get(["users",chat_id,"schedule_data"]).val()
+#     except IndexError:
+#         send_message(bot,chat_id,'Your foggot to enter day(example: /get_schedule 2 ,to get tuesday\'s schedule),please,try again')
+#         return
+#     global db
+#     weekdays = db.get(["users",chat_id,"schedule_data"]).val()
     
-    for i in range(len(weekdays[day])):
-        send_message(bot,chat_id,'{}){}'.format(i+1,weekdays[day][i]))
+#     for i in range(len(weekdays[day])):
+#         send_message(bot,chat_id,'{}){}'.format(i+1,weekdays[day][i]))
 
 
 def unknown_command(bot, update):
@@ -180,9 +182,9 @@ def help(bot, update):
     send_message(bot,chat_id,"Avaible commands:"\
                                 "\n" \
                                 "\n" \
-                                "1. /set_student_number - update student number" \
+                                "1. /set_sn - update student number" \
                                 "\n" \
-                                "2. /set_password - update password" \
+                                "2. /set_p - update password" \
                                 "\n" \
                                 "3. /on - start notifying " \
                                 "\n" \
@@ -200,8 +202,8 @@ def main():
     dp = updater.dispatcher
 
     dp.add_handler(CommandHandler('start',start))
-    dp.add_handler(CommandHandler('set_student_number',set_student_number,pass_args=True))
-    dp.add_handler(CommandHandler('set_password',set_password,pass_args=True))
+    dp.add_handler(CommandHandler('set_sn',set_student_number,pass_args=True))
+    dp.add_handler(CommandHandler('set_p',set_password,pass_args=True))
     dp.add_handler(CommandHandler('on',notify_on,pass_job_queue=True))
     dp.add_handler(CommandHandler('help', help))    
     dp.add_handler(MessageHandler(Filters.command, unknown_command))
