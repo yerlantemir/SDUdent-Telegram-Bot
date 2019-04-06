@@ -74,7 +74,7 @@ def notify_on(bot,update,job_queue):
     chat_id = get_chat_id(update)
 
     entered = db.get(["users",chat_id,"entered"])
-    
+    print(entered)
     if(entered):
         send_message(bot,chat_id,"I have already got your data,no need to call this command anymore")
         return
