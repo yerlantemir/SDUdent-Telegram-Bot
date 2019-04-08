@@ -98,8 +98,10 @@ def notify_on(bot,update,job_queue):
 
         sc = Schedule(username,password)
         db.set_data(["users",chat_id,"entered"],True)
+
     except NoSuchElementException:
 
+        db.set_data(["users",chat_id,"entered"],False)
         send_message(bot,chat_id,'You entered incorrect username/password,so we could not get your schedule,try again!')
         return
     
@@ -113,6 +115,7 @@ def notify_grades(bot,job):
     
     db = Database()
     sc = job.context[0]
+    sc.refresh_page()
     chat_id = job.context[1]
     old_grades = db.get(["users",chat_id,"grades_data"]).val()
 

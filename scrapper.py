@@ -62,7 +62,8 @@ class Schedule:
         self.driver.find_element_by_class_name("q-button").click()
         self.driver.find_element_by_css_selector(".leftLinks a[href^='?mod=grades'] ").click()
 
-    
+    def refresh_page(self):
+        self.driver.refresh()
     def get_grades_data(self):
         
         sleep(2)
