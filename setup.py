@@ -13,13 +13,11 @@ import os
 
 
 
-db = Database()
 
 
 def start(bot,update):
     
     chat_id = get_chat_id(update)
-    global db
     send_message(bot,chat_id,"Hi SDUdent!!"\
                             "\n" \
                             "\n" \
@@ -33,7 +31,7 @@ def start(bot,update):
 
 
 def set_student_number(bot,update,args):
-    global db
+    db = Database()
     chat_id = get_chat_id(update)
     
     try:
@@ -51,7 +49,7 @@ def set_student_number(bot,update,args):
 
 
 def set_password(bot,update,args):
-
+    db = Database()
     chat_id = get_chat_id(update)
     
     try:
@@ -70,7 +68,7 @@ def set_password(bot,update,args):
 
 def notify_on(bot,update,job_queue):
     
-    global db
+    db = Database()
     chat_id = get_chat_id(update)
 
     entered = db.get(["users",chat_id,"entered"]).val()
@@ -106,7 +104,7 @@ def notify_on(bot,update,job_queue):
 
 def notify_grades(bot,job):
     
-    global db
+    db = Database()
     sc = job.context[0]
     chat_id = job.context[1]
     old_grades = db.get(["users",chat_id,"grades_data"]).val()
