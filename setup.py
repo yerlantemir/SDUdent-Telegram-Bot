@@ -21,7 +21,14 @@ def start(bot,update):
     send_message(bot,chat_id,"Hi SDUdent!!"\
                             "\n" \
                             "\n" \
-                            "Tell me your username and password from portal and I will notify you about new grades!"\
+                            "Follow giving instructions to get notifications about your grades and absences, which will change in portal."\
+                            "\n" \
+                            "\n" \
+                            "1)/set_sn your_student_number (ex: /set_sn 170103024)"\
+                            "\n" \
+                            "2)/set_p you_password (ex: /set_p kyzylorda1999)"
+                            "\n" \
+                            "3)/on (activate process)"
                             "\n" \
                             "\n" \
                             "Type /help to show list of avaible commands" \
