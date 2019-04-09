@@ -55,15 +55,16 @@ class Schedule:
     
     def login(self):
 
-        self.driver = webdriver.Chrome()
+        self.driver = webdriver.Firefox()
         self.driver.get('https://my.sdu.edu.kz/')
         self.driver.find_element_by_id("username").send_keys(self.username)
         self.driver.find_element_by_id("password").send_keys(self.password)
         self.driver.find_element_by_class_name("q-button").click()
         self.driver.find_element_by_css_selector(".leftLinks a[href^='?mod=grades'] ").click()
 
-    def refresh_page(self):
-        self.driver.refresh()
+    def close_browser(self):
+        self.driver.close()
+        
     def get_grades_data(self):
         
         sleep(2)

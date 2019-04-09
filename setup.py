@@ -10,10 +10,7 @@ from database import Database
 import ast
 import AESencoder as crpt
 import os
-
-
-
-
+import threading
 
 def start(bot,update):
     
@@ -38,6 +35,7 @@ def start(bot,update):
 
 
 def set_student_number(bot,update,args):
+
     db = Database()
     chat_id = get_chat_id(update)
     
@@ -73,7 +71,7 @@ def set_password(bot,update,args):
     send_message(bot,chat_id,'Password saved')
     
 
-def notify_on(bot,update,job_queue):
+def notify_on(bot,update):
     
     db = Database()
     chat_id = get_chat_id(update)
@@ -103,26 +101,51 @@ def notify_on(bot,update,job_queue):
 
         db.set_data(["users",chat_id,"entered"],False)
         send_message(bot,chat_id,'You entered incorrect username/password,so we could not get your schedule,try again!')
+        sc.close_browser()
         return
     
     grades_data = sc.get_grades_data()
+    sc.close_browser()
     db.set_data(["users",chat_id,"grades_data"],grades_data)
     send_message(bot,chat_id,'Yahooo! I did it! From now I will notify you about updated grades and absences!!')
-    job_queue.run_repeating(notify_grades,600,context=(sc,chat_id))
 
 
-def notify_grades(bot,job):
+def notify_grades(bot_):
     
-    db = Database()
-    sc = job.context[0]
-    sc.refresh_page()
-    chat_id = job.context[1]
-    old_grades = db.get(["users",chat_id,"grades_data"]).val()
+    while(True):
+        
+        db = Database()
+        users = db.get(['users'])
+        
+        for user in list(users.val().items()):
+            
+            if 'entered' not in user[-1].keys():
+                continue
 
-    new_grades = sc.get_grades_data() 
-    updates,appends = get_update_in_grades(old_grades,new_grades)
+            st_id = crpt.decrypt(user[-1]['username'])
+            password = crpt.decrypt(user[-1]['password'])
+            chat_id = user[0]
+            
+            try:
+                sc = Schedule(st_id,password)
+            except NoSuchElementException:
+                continue
+            
+            if 'grades_data' not in user[-1].keys():
+                continue
+            old_grades = user[-1]['grades_data']
+            new_grades = sc.get_grades_data()
+            sc.close_browser()
+            updates,appends = get_update_in_grades(old_grades,new_grades)
+            notify_about_new_grade(bot_,appends,updates,new_grades,old_grades,chat_id)
+        db.set_data(["users",chat_id,"grades_data"],new_grades)
+        time.sleep(600)
+
+
+def notify_about_new_grade(bot_,appends,updates,new_grades,old_grades,chat_id):
+    
     grade_states = ['1st midterm','2nd midterm','final','average']
-    
+
     if appends != 0:
         print(updates,'updates:')
         for i in range(len(updates)):
@@ -136,14 +159,12 @@ def notify_grades(bot,job):
                     if i == 0:
 
                         new = new_grades[updates[i][k]]['att']
-                        print(new)
                         old = old_grades[updates[i][k]]['att']
-                        print(old)
                         if old == '0':
-                            send_message(bot,chat_id,'Absence count by subject \"{}\" was changed to {}'.format(subject_name,new))
+                            send_message(bot_,chat_id,'Absence count by subject \"{}\" was changed to {}'.format(subject_name,new))
                         
                         else:
-                            send_message(bot,chat_id,'Absence count by subject \"{}\" was changed from {} to {}'.format
+                            send_message(bot_,chat_id,'Absence count by subject \"{}\" was changed from {} to {}'.format
                                 (subject_name,old,new))
                     else:
                         
@@ -151,17 +172,16 @@ def notify_grades(bot,job):
                         old = old_grades[updates[i][k]]['grade'][grade_states[i-1]]
                         print(new,old)
                         if old == '':
-                            send_message(bot,chat_id,'{} grade by subject \"{}\" : {}'.format(grade_states[i-1],subject_name,new))
+                            send_message(bot_,chat_id,'{} grade by subject \"{}\" : {}'.format(grade_states[i-1],subject_name,new))
                         
                         else:
-                            send_message(bot,chat_id,'{} grade by subject \"{}\" was changed from {} to {}'.
+                            send_message(bot_,chat_id,'{} grade by subject \"{}\" was changed from {} to {}'.
                                 format(grade_states[i-1],subject_name,old,new))
 
 
                 
   
 
-    db.set_data(["users",chat_id,"grades_data"],new_grades)
 
 # def get_schedule(bot,update,args):
 
@@ -209,10 +229,13 @@ def main():
     updater = facade.getBot()
     dp = updater.dispatcher
 
+    thread = threading.Thread(target=notify_grades,args=(updater.bot,))
+    thread.start()
+
     dp.add_handler(CommandHandler('start',start))
     dp.add_handler(CommandHandler('set_sn',set_student_number,pass_args=True))
     dp.add_handler(CommandHandler('set_p',set_password,pass_args=True))
-    dp.add_handler(CommandHandler('on',notify_on,pass_job_queue=True))
+    dp.add_handler(CommandHandler('on',notify_on))
     dp.add_handler(CommandHandler('help', help))    
     dp.add_handler(MessageHandler(Filters.command, unknown_command))
     updater.start_polling()
