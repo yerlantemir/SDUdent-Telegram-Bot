@@ -101,7 +101,6 @@ def notify_on(bot,update):
 
         db.set_data(["users",chat_id,"entered"],False)
         send_message(bot,chat_id,'You entered incorrect username/password,so we could not get your schedule,try again!')
-        sc.close_browser()
         return
     
     grades_data = sc.get_grades_data()
