@@ -55,7 +55,7 @@ class Schedule:
     
     def login(self):
 
-        self.driver = webdriver.Firefox()
+        self.driver = webdriver.Chrome()
         self.driver.get('https://my.sdu.edu.kz/')
         self.driver.find_element_by_id("username").send_keys(self.username)
         self.driver.find_element_by_id("password").send_keys(self.password)
