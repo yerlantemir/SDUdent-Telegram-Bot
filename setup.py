@@ -108,38 +108,99 @@ def notify_on(bot,update):
     db.set_data(["users",chat_id,"grades_data"],grades_data)
     send_message(bot,chat_id,'Yahooo! I did it! From now I will notify you about updated grades and absences!!')
 
+def add_browsers(users):
+
+    browsers = []
+
+    for user in len(users.items()):
+        
+        browser = {}
+        
+        if 'entered' not in user[-1].keys():
+            continue
+        
+        st_id = crpt.decrypt(user[-1]['username'])
+        password = crpt.decrypt(user[-1]['password'])
+        chat_id = user[0]
+
+        browser['chat_id'] = chat_id
+        sc = Schedule(st_id,password)
+        browser['sc'] = sc
+
+        browsers.append(browser)
+    return browsers
 
 def notify_grades(bot_):
     
+    db = Database()
+    users = db.get(["users"]).val()
+    browsers = add_browsers(users)
+    
     while(True):
-        
-        db = Database()
-        users = db.get(['users'])
-        
-        for user in list(users.val().items()):
-            
-            if 'entered' not in user[-1].keys():
-                continue
 
-            st_id = crpt.decrypt(user[-1]['username'])
-            password = crpt.decrypt(user[-1]['password'])
-            chat_id = user[0]
+        db = Database()
+        browsers = add_new_browsers(browsers,users)
+        
+        for browser in browsers:
             
-            try:
-                sc = Schedule(st_id,password)
-            except NoSuchElementException:
-                continue
-            
-            if 'grades_data' not in user[-1].keys():
-                continue
-            old_grades = user[-1]['grades_data']
+            chat_id = browser['chat_id']
+            sc = browser['sc']
+            old_grades = users[chat_id]['grades_data']
             new_grades = sc.get_grades_data()
-            sc.close_browser()
             updates,appends = get_update_in_grades(old_grades,new_grades)
             notify_about_new_grade(bot_,appends,updates,new_grades,old_grades,chat_id)
             db.set_data(["users",chat_id,"grades_data"],new_grades)
+        
+        time.sleep(300)
+        
+        
+def add_new_browsers(browsers,users):
+    
+    l = [x[0] for x in list(users.items())]
+    l2 = [k['chat_id'] for k in browsers]
+    difference = list(set(l)-set(l2))
 
-        time.sleep(600)
+    for chat_id in difference:
+        
+        if 'entered' not in users[chat_id].keys():
+            continue
+        username = crpt.decrypt(users[chat_id]['username'])
+        password = crpt.decrypt(users[chat_id]['password'])
+        sc = Schedule(username,password)
+        browsers.append({'chat_id':chat_id,'sc':sc})
+
+    return browsers
+    
+
+    
+    # while(True):
+        
+    #     db = Database()
+    #     users = list(db.get(['users']).val().items())
+        
+    #     for user in users:
+            
+    #         if 'entered' not in user[-1].keys():
+    #             continue
+
+    #         st_id = crpt.decrypt(user[-1]['username'])
+    #         password = crpt.decrypt(user[-1]['password'])
+    #         chat_id = user[0]
+            
+    #         try:
+    #             sc = Schedule(st_id,password)
+    #         except NoSuchElementException:
+    #             continue
+            
+    #         if 'grades_data' not in user[-1].keys():
+    #             continue
+
+    #         old_grades = user[-1]['grades_data']
+    #         new_grades = sc.get_grades_data()
+    #         sc.close_browser()
+          
+
+    #     time.sleep(600)
 
 
 def notify_about_new_grade(bot_,appends,updates,new_grades,old_grades,chat_id):
