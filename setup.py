@@ -151,7 +151,7 @@ def notify_grades(bot_):
             notify_about_new_grade(bot_,appends,updates,new_grades,old_grades,chat_id)
             db.set_data(["users",chat_id,"grades_data"],new_grades)
         
-        time.sleep(900)
+        time.sleep(50)
         
         
 def add_new_browsers(browsers,users):

@@ -3683,3 +3683,918 @@ JavaScript warning: https://my.sdu.edu.kz/common/general.js, line 597: unreachab
 Exiting due to channel error.
 Exiting due to channel error.
 Exiting due to channel error.
+1554999797864	mozrunner::runner	INFO	Running command: "/usr/bin/firefox" "-marionette" "-foreground" "-no-remote" "-profile" "/tmp/rust_mozprofile.BEGbXvT5Vqsh"
+1554999799062	addons.webextension.screenshots@mozilla.org	WARN	Loading extension 'screenshots@mozilla.org': Reading manifest: Invalid host permission: resource://pdf.js/
+1554999799062	addons.webextension.screenshots@mozilla.org	WARN	Loading extension 'screenshots@mozilla.org': Reading manifest: Invalid host permission: about:reader*
+
+(firefox:6087): Gtk-WARNING **: 22:23:19.825: Theme parsing error: <data>:1:34: Expected ')' in color definition
+
+(firefox:6087): Gtk-WARNING **: 22:23:19.825: Theme parsing error: <data>:1:77: Expected ')' in color definition
+1554999803383	Marionette	INFO	Listening on port 36599
+1554999803453	Marionette	WARN	TLS certificate errors will be ignored for this session
+JavaScript warning: https://my.sdu.edu.kz/common/general.js, line 597: unreachable code after return statement
+JavaScript warning: https://my.sdu.edu.kz/common/general.js, line 597: unreachable code after return statement
+1554999808721	mozrunner::runner	INFO	Running command: "/usr/bin/firefox" "-marionette" "-foreground" "-no-remote" "-profile" "/tmp/rust_mozprofile.o24Bx69sOV6K"
+1554999809247	addons.webextension.screenshots@mozilla.org	WARN	Loading extension 'screenshots@mozilla.org': Reading manifest: Invalid host permission: resource://pdf.js/
+1554999809248	addons.webextension.screenshots@mozilla.org	WARN	Loading extension 'screenshots@mozilla.org': Reading manifest: Invalid host permission: about:reader*
+
+(firefox:6352): Gtk-WARNING **: 22:23:29.894: Theme parsing error: <data>:1:34: Expected ')' in color definition
+
+(firefox:6352): Gtk-WARNING **: 22:23:29.894: Theme parsing error: <data>:1:77: Expected ')' in color definition
+1554999812336	Marionette	INFO	Listening on port 36321
+1554999812446	Marionette	WARN	TLS certificate errors will be ignored for this session
+JavaScript warning: https://my.sdu.edu.kz/common/general.js, line 597: unreachable code after return statement
+JavaScript warning: https://my.sdu.edu.kz/common/general.js, line 597: unreachable code after return statement
+1554999816332	mozrunner::runner	INFO	Running command: "/usr/bin/firefox" "-marionette" "-foreground" "-no-remote" "-profile" "/tmp/rust_mozprofile.lIgLO2kME6fk"
+1554999816790	addons.webextension.screenshots@mozilla.org	WARN	Loading extension 'screenshots@mozilla.org': Reading manifest: Invalid host permission: resource://pdf.js/
+1554999816790	addons.webextension.screenshots@mozilla.org	WARN	Loading extension 'screenshots@mozilla.org': Reading manifest: Invalid host permission: about:reader*
+
+(firefox:6608): Gtk-WARNING **: 22:23:37.550: Theme parsing error: <data>:1:34: Expected ')' in color definition
+
+(firefox:6608): Gtk-WARNING **: 22:23:37.550: Theme parsing error: <data>:1:77: Expected ')' in color definition
+1554999820413	Marionette	INFO	Listening on port 46691
+1554999820451	Marionette	WARN	TLS certificate errors will be ignored for this session
+JavaScript warning: https://my.sdu.edu.kz/common/general.js, line 597: unreachable code after return statement
+JavaScript warning: https://my.sdu.edu.kz/common/general.js, line 597: unreachable code after return statement
+1554999825812	mozrunner::runner	INFO	Running command: "/usr/bin/firefox" "-marionette" "-foreground" "-no-remote" "-profile" "/tmp/rust_mozprofile.xRYaAPLwvaBo"
+1554999826266	addons.webextension.screenshots@mozilla.org	WARN	Loading extension 'screenshots@mozilla.org': Reading manifest: Invalid host permission: resource://pdf.js/
+1554999826267	addons.webextension.screenshots@mozilla.org	WARN	Loading extension 'screenshots@mozilla.org': Reading manifest: Invalid host permission: about:reader*
+
+(firefox:6872): Gtk-WARNING **: 22:23:46.986: Theme parsing error: <data>:1:34: Expected ')' in color definition
+
+(firefox:6872): Gtk-WARNING **: 22:23:46.986: Theme parsing error: <data>:1:77: Expected ')' in color definition
+1554999829239	Marionette	INFO	Listening on port 43109
+1554999829335	Marionette	WARN	TLS certificate errors will be ignored for this session
+JavaScript warning: https://my.sdu.edu.kz/common/general.js, line 597: unreachable code after return statement
+JavaScript warning: https://my.sdu.edu.kz/common/general.js, line 597: unreachable code after return statement
+1554999833141	mozrunner::runner	INFO	Running command: "/usr/bin/firefox" "-marionette" "-foreground" "-no-remote" "-profile" "/tmp/rust_mozprofile.Bv0mzgciR4yv"
+1554999833571	addons.webextension.screenshots@mozilla.org	WARN	Loading extension 'screenshots@mozilla.org': Reading manifest: Invalid host permission: resource://pdf.js/
+1554999833571	addons.webextension.screenshots@mozilla.org	WARN	Loading extension 'screenshots@mozilla.org': Reading manifest: Invalid host permission: about:reader*
+
+(firefox:7130): Gtk-WARNING **: 22:23:54.541: Theme parsing error: <data>:1:34: Expected ')' in color definition
+
+(firefox:7130): Gtk-WARNING **: 22:23:54.541: Theme parsing error: <data>:1:77: Expected ')' in color definition
+1554999837110	Marionette	INFO	Listening on port 45935
+1554999837176	Marionette	WARN	TLS certificate errors will be ignored for this session
+console.error: BroadcastService: 
+  receivedBroadcastMessage: handler for
+  remote-settings/monitor_changes
+  threw error:
+  Message: Error: Polling for changes failed: NetworkError when attempting to fetch resource..
+  Stack:
+    remoteSettingsFunction/remoteSettings.pollChanges@resource://services-settings/remote-settings.js:188:13
+
+console.error: BroadcastService: 
+  receivedBroadcastMessage: handler for
+  remote-settings/monitor_changes
+  threw error:
+  Message: Error: Polling for changes failed: NetworkError when attempting to fetch resource..
+  Stack:
+    remoteSettingsFunction/remoteSettings.pollChanges@resource://services-settings/remote-settings.js:188:13
+
+JavaScript warning: https://my.sdu.edu.kz/common/general.js, line 597: unreachable code after return statement
+JavaScript warning: https://my.sdu.edu.kz/common/general.js, line 597: unreachable code after return statement
+1554999842506	mozrunner::runner	INFO	Running command: "/usr/bin/firefox" "-marionette" "-foreground" "-no-remote" "-profile" "/tmp/rust_mozprofile.ANv8xSP5zsuj"
+1554999842926	addons.webextension.screenshots@mozilla.org	WARN	Loading extension 'screenshots@mozilla.org': Reading manifest: Invalid host permission: resource://pdf.js/
+1554999842927	addons.webextension.screenshots@mozilla.org	WARN	Loading extension 'screenshots@mozilla.org': Reading manifest: Invalid host permission: about:reader*
+
+(firefox:7389): Gtk-WARNING **: 22:24:04.613: Theme parsing error: <data>:1:34: Expected ')' in color definition
+
+(firefox:7389): Gtk-WARNING **: 22:24:04.613: Theme parsing error: <data>:1:77: Expected ')' in color definition
+1554999847785	Marionette	INFO	Listening on port 35863
+1554999847822	Marionette	WARN	TLS certificate errors will be ignored for this session
+JavaScript warning: https://my.sdu.edu.kz/common/general.js, line 597: unreachable code after return statement
+JavaScript warning: https://my.sdu.edu.kz/common/general.js, line 597: unreachable code after return statement
+1554999852457	mozrunner::runner	INFO	Running command: "/usr/bin/firefox" "-marionette" "-foreground" "-no-remote" "-profile" "/tmp/rust_mozprofile.8Y2IAV9gGWs9"
+1554999853273	addons.webextension.screenshots@mozilla.org	WARN	Loading extension 'screenshots@mozilla.org': Reading manifest: Invalid host permission: resource://pdf.js/
+1554999853273	addons.webextension.screenshots@mozilla.org	WARN	Loading extension 'screenshots@mozilla.org': Reading manifest: Invalid host permission: about:reader*
+
+(firefox:7648): Gtk-WARNING **: 22:24:14.860: Theme parsing error: <data>:1:34: Expected ')' in color definition
+
+(firefox:7648): Gtk-WARNING **: 22:24:14.860: Theme parsing error: <data>:1:77: Expected ')' in color definition
+1554999857367	Marionette	INFO	Listening on port 36715
+1554999858396	Marionette	WARN	TLS certificate errors will be ignored for this session
+JavaScript warning: https://my.sdu.edu.kz/common/general.js, line 597: unreachable code after return statement
+JavaScript warning: https://my.sdu.edu.kz/common/general.js, line 597: unreachable code after return statement
+1554999863157	mozrunner::runner	INFO	Running command: "/usr/bin/firefox" "-marionette" "-foreground" "-no-remote" "-profile" "/tmp/rust_mozprofile.h7PMe6NkR8xp"
+1554999864454	addons.webextension.screenshots@mozilla.org	WARN	Loading extension 'screenshots@mozilla.org': Reading manifest: Invalid host permission: resource://pdf.js/
+1554999864454	addons.webextension.screenshots@mozilla.org	WARN	Loading extension 'screenshots@mozilla.org': Reading manifest: Invalid host permission: about:reader*
+
+(firefox:7912): Gtk-WARNING **: 22:24:25.874: Theme parsing error: <data>:1:34: Expected ')' in color definition
+
+(firefox:7912): Gtk-WARNING **: 22:24:25.874: Theme parsing error: <data>:1:77: Expected ')' in color definition
+1554999869137	Marionette	INFO	Listening on port 37119
+1554999869179	Marionette	WARN	TLS certificate errors will be ignored for this session
+JavaScript warning: https://my.sdu.edu.kz/common/general.js, line 597: unreachable code after return statement
+JavaScript warning: https://my.sdu.edu.kz/common/general.js, line 597: unreachable code after return statement
+1554999874242	mozrunner::runner	INFO	Running command: "/usr/bin/firefox" "-marionette" "-foreground" "-no-remote" "-profile" "/tmp/rust_mozprofile.4VMGq0lqf7Np"
+1554999875336	addons.webextension.screenshots@mozilla.org	WARN	Loading extension 'screenshots@mozilla.org': Reading manifest: Invalid host permission: resource://pdf.js/
+1554999875336	addons.webextension.screenshots@mozilla.org	WARN	Loading extension 'screenshots@mozilla.org': Reading manifest: Invalid host permission: about:reader*
+
+(firefox:8158): Gtk-WARNING **: 22:24:36.226: Theme parsing error: <data>:1:34: Expected ')' in color definition
+
+(firefox:8158): Gtk-WARNING **: 22:24:36.226: Theme parsing error: <data>:1:77: Expected ')' in color definition
+1554999882087	Marionette	INFO	Listening on port 33207
+1554999882220	Marionette	WARN	TLS certificate errors will be ignored for this session
+JavaScript warning: https://my.sdu.edu.kz/common/general.js, line 597: unreachable code after return statement
+JavaScript warning: https://my.sdu.edu.kz/common/general.js, line 597: unreachable code after return statement
+1554999885963	mozrunner::runner	INFO	Running command: "/usr/bin/firefox" "-marionette" "-foreground" "-no-remote" "-profile" "/tmp/rust_mozprofile.Dadfm5DUiQyI"
+1554999886899	addons.webextension.screenshots@mozilla.org	WARN	Loading extension 'screenshots@mozilla.org': Reading manifest: Invalid host permission: resource://pdf.js/
+1554999886899	addons.webextension.screenshots@mozilla.org	WARN	Loading extension 'screenshots@mozilla.org': Reading manifest: Invalid host permission: about:reader*
+
+(firefox:8418): Gtk-WARNING **: 22:24:47.848: Theme parsing error: <data>:1:34: Expected ')' in color definition
+
+(firefox:8418): Gtk-WARNING **: 22:24:47.848: Theme parsing error: <data>:1:77: Expected ')' in color definition
+1554999891615	Marionette	INFO	Listening on port 43955
+1554999891680	Marionette	WARN	TLS certificate errors will be ignored for this session
+JavaScript warning: https://my.sdu.edu.kz/common/general.js, line 597: unreachable code after return statement
+JavaScript warning: https://my.sdu.edu.kz/common/general.js, line 597: unreachable code after return statement
+1554999896828	mozrunner::runner	INFO	Running command: "/usr/bin/firefox" "-marionette" "-foreground" "-no-remote" "-profile" "/tmp/rust_mozprofile.kO7CLJJgUHcn"
+1554999897734	addons.webextension.screenshots@mozilla.org	WARN	Loading extension 'screenshots@mozilla.org': Reading manifest: Invalid host permission: resource://pdf.js/
+1554999897734	addons.webextension.screenshots@mozilla.org	WARN	Loading extension 'screenshots@mozilla.org': Reading manifest: Invalid host permission: about:reader*
+
+(firefox:8648): Gtk-WARNING **: 22:24:59.936: Theme parsing error: <data>:1:34: Expected ')' in color definition
+
+(firefox:8648): Gtk-WARNING **: 22:24:59.936: Theme parsing error: <data>:1:77: Expected ')' in color definition
+1554999904458	Marionette	INFO	Listening on port 34609
+1554999905410	Marionette	WARN	TLS certificate errors will be ignored for this session
+JavaScript warning: https://my.sdu.edu.kz/common/general.js, line 597: unreachable code after return statement
+JavaScript warning: https://my.sdu.edu.kz/common/general.js, line 597: unreachable code after return statement
+1554999911629	mozrunner::runner	INFO	Running command: "/usr/bin/firefox" "-marionette" "-foreground" "-no-remote" "-profile" "/tmp/rust_mozprofile.Q4gr0GM2Dodi"
+1554999916116	addons.webextension.screenshots@mozilla.org	WARN	Loading extension 'screenshots@mozilla.org': Reading manifest: Invalid host permission: resource://pdf.js/
+1554999916116	addons.webextension.screenshots@mozilla.org	WARN	Loading extension 'screenshots@mozilla.org': Reading manifest: Invalid host permission: about:reader*
+
+(firefox:8942): Gtk-WARNING **: 22:25:18.867: Theme parsing error: <data>:1:34: Expected ')' in color definition
+
+(firefox:8942): Gtk-WARNING **: 22:25:18.867: Theme parsing error: <data>:1:77: Expected ')' in color definition
+1554999929262	Marionette	INFO	Listening on port 41561
+1554999930169	Marionette	WARN	TLS certificate errors will be ignored for this session
+JavaScript warning: https://my.sdu.edu.kz/common/general.js, line 597: unreachable code after return statement
+JavaScript warning: https://my.sdu.edu.kz/common/general.js, line 597: unreachable code after return statement
+1554999935895	mozrunner::runner	INFO	Running command: "/usr/bin/firefox" "-marionette" "-foreground" "-no-remote" "-profile" "/tmp/rust_mozprofile.LLcMJQPap7C3"
+1554999939308	addons.webextension.screenshots@mozilla.org	WARN	Loading extension 'screenshots@mozilla.org': Reading manifest: Invalid host permission: resource://pdf.js/
+1554999939309	addons.webextension.screenshots@mozilla.org	WARN	Loading extension 'screenshots@mozilla.org': Reading manifest: Invalid host permission: about:reader*
+
+(firefox:9240): Gtk-WARNING **: 22:25:45.956: Theme parsing error: <data>:1:34: Expected ')' in color definition
+
+(firefox:9240): Gtk-WARNING **: 22:25:45.956: Theme parsing error: <data>:1:77: Expected ')' in color definition
+1554999957350	Marionette	INFO	Listening on port 43467
+1554999957817	Marionette	WARN	TLS certificate errors will be ignored for this session
+JavaScript warning: https://my.sdu.edu.kz/common/general.js, line 597: unreachable code after return statement
+JavaScript warning: https://my.sdu.edu.kz/common/general.js, line 597: unreachable code after return statement
+1554999966619	mozrunner::runner	INFO	Running command: "/usr/bin/firefox" "-marionette" "-foreground" "-no-remote" "-profile" "/tmp/rust_mozprofile.plpkSdsH9Fpj"
+1554999970282	addons.webextension.screenshots@mozilla.org	WARN	Loading extension 'screenshots@mozilla.org': Reading manifest: Invalid host permission: resource://pdf.js/
+1554999970347	addons.webextension.screenshots@mozilla.org	WARN	Loading extension 'screenshots@mozilla.org': Reading manifest: Invalid host permission: about:reader*
+
+(firefox:9535): Gtk-WARNING **: 22:26:15.589: Theme parsing error: <data>:1:34: Expected ')' in color definition
+
+(firefox:9535): Gtk-WARNING **: 22:26:15.589: Theme parsing error: <data>:1:77: Expected ')' in color definition
+1554999982471	Marionette	INFO	Listening on port 46771
+1554999982617	Marionette	WARN	TLS certificate errors will be ignored for this session
+JavaScript warning: https://my.sdu.edu.kz/common/general.js, line 597: unreachable code after return statement
+JavaScript warning: https://my.sdu.edu.kz/common/general.js, line 597: unreachable code after return statement
+1554999988891	mozrunner::runner	INFO	Running command: "/usr/bin/firefox" "-marionette" "-foreground" "-no-remote" "-profile" "/tmp/rust_mozprofile.Xv1EJdNocRhX"
+1554999991110	addons.webextension.screenshots@mozilla.org	WARN	Loading extension 'screenshots@mozilla.org': Reading manifest: Invalid host permission: resource://pdf.js/
+1554999991110	addons.webextension.screenshots@mozilla.org	WARN	Loading extension 'screenshots@mozilla.org': Reading manifest: Invalid host permission: about:reader*
+
+(firefox:9823): Gtk-WARNING **: 22:26:34.302: Theme parsing error: <data>:1:34: Expected ')' in color definition
+
+(firefox:9823): Gtk-WARNING **: 22:26:34.302: Theme parsing error: <data>:1:77: Expected ')' in color definition
+console.error: BroadcastService: 
+console.error: BroadcastService: 
+  receivedBroadcastMessage: handler for
+  receivedBroadcastMessage: handler for
+  remote-settings/monitor_changes
+  remote-settings/monitor_changes
+  threw error:
+  threw error:
+  Message: Error: Polling for changes failed: NetworkError when attempting to fetch resource..
+  Stack:
+    remoteSettingsFunction/remoteSettings.pollChanges@resource://services-settings/remote-settings.js:188:13
+
+  Message: Error: Polling for changes failed: NetworkError when attempting to fetch resource..
+  Stack:
+    remoteSettingsFunction/remoteSettings.pollChanges@resource://services-settings/remote-settings.js:188:13
+
+console.error: BroadcastService: 
+  receivedBroadcastMessage: handler for
+  remote-settings/monitor_changes
+  threw error:
+  Message: Error: Polling for changes failed: NetworkError when attempting to fetch resource..
+  Stack:
+    remoteSettingsFunction/remoteSettings.pollChanges@resource://services-settings/remote-settings.js:188:13
+
+console.error: BroadcastService: 
+  receivedBroadcastMessage: handler for
+  remote-settings/monitor_changes
+  threw error:
+  Message: Error: Polling for changes failed: NetworkError when attempting to fetch resource..
+  Stack:
+    remoteSettingsFunction/remoteSettings.pollChanges@resource://services-settings/remote-settings.js:188:13
+
+console.error: BroadcastService: 
+console.error: BroadcastService: 
+  receivedBroadcastMessage: handler for
+  remote-settings/monitor_changes
+  threw error:
+  Message: Error: Polling for changes failed: NetworkError when attempting to fetch resource..
+  Stack:
+    remoteSettingsFunction/remoteSettings.pollChanges@resource://services-settings/remote-settings.js:188:13
+
+  receivedBroadcastMessage: handler for
+  remote-settings/monitor_changes
+  threw error:
+  Message: Error: Polling for changes failed: NetworkError when attempting to fetch resource..
+  Stack:
+    remoteSettingsFunction/remoteSettings.pollChanges@resource://services-settings/remote-settings.js:188:13
+
+console.error: BroadcastService: 
+  receivedBroadcastMessage: handler for
+  remote-settings/monitor_changes
+  threw error:
+  Message: Error: Polling for changes failed: NetworkError when attempting to fetch resource..
+  Stack:
+    remoteSettingsFunction/remoteSettings.pollChanges@resource://services-settings/remote-settings.js:188:13
+
+console.error: BroadcastService: 
+  receivedBroadcastMessage: handler for
+  remote-settings/monitor_changes
+  threw error:
+  Message: Error: Polling for changes failed: NetworkError when attempting to fetch resource..
+  Stack:
+    remoteSettingsFunction/remoteSettings.pollChanges@resource://services-settings/remote-settings.js:188:13
+
+console.error: BroadcastService: 
+  receivedBroadcastMessage: handler for
+  remote-settings/monitor_changes
+  threw error:
+  Message: Error: Polling for changes failed: NetworkError when attempting to fetch resource..
+  Stack:
+    remoteSettingsFunction/remoteSettings.pollChanges@resource://services-settings/remote-settings.js:188:13
+
+console.error: BroadcastService: 
+  receivedBroadcastMessage: handler for
+  remote-settings/monitor_changes
+  threw error:
+  Message: Error: Polling for changes failed: NetworkError when attempting to fetch resource..
+  Stack:
+    remoteSettingsFunction/remoteSettings.pollChanges@resource://services-settings/remote-settings.js:188:13
+
+console.error: BroadcastService: 
+  receivedBroadcastMessage: handler for
+  remote-settings/monitor_changes
+  threw error:
+  Message: Error: Polling for changes failed: NetworkError when attempting to fetch resource..
+  Stack:
+    remoteSettingsFunction/remoteSettings.pollChanges@resource://services-settings/remote-settings.js:188:13
+
+1555000003635	Marionette	INFO	Listening on port 37833
+1555000004296	Marionette	WARN	TLS certificate errors will be ignored for this session
+JavaScript warning: https://my.sdu.edu.kz/common/general.js, line 597: unreachable code after return statement
+JavaScript warning: https://my.sdu.edu.kz/common/general.js, line 597: unreachable code after return statement
+1555000010818	mozrunner::runner	INFO	Running command: "/usr/bin/firefox" "-marionette" "-foreground" "-no-remote" "-profile" "/tmp/rust_mozprofile.c2tJLWE3xwyM"
+1555000014146	addons.webextension.screenshots@mozilla.org	WARN	Loading extension 'screenshots@mozilla.org': Reading manifest: Invalid host permission: resource://pdf.js/
+1555000014146	addons.webextension.screenshots@mozilla.org	WARN	Loading extension 'screenshots@mozilla.org': Reading manifest: Invalid host permission: about:reader*
+
+(firefox:10125): Gtk-WARNING **: 22:26:56.846: Theme parsing error: <data>:1:34: Expected ')' in color definition
+
+(firefox:10125): Gtk-WARNING **: 22:26:56.846: Theme parsing error: <data>:1:77: Expected ')' in color definition
+1555000024134	Marionette	INFO	Listening on port 38741
+1555000024176	Marionette	WARN	TLS certificate errors will be ignored for this session
+JavaScript warning: https://my.sdu.edu.kz/common/general.js, line 597: unreachable code after return statement
+JavaScript warning: https://my.sdu.edu.kz/common/general.js, line 597: unreachable code after return statement
+1555000030473	mozrunner::runner	INFO	Running command: "/usr/bin/firefox" "-marionette" "-foreground" "-no-remote" "-profile" "/tmp/rust_mozprofile.9jUhMqWosHco"
+1555000033216	addons.webextension.screenshots@mozilla.org	WARN	Loading extension 'screenshots@mozilla.org': Reading manifest: Invalid host permission: resource://pdf.js/
+1555000033263	addons.webextension.screenshots@mozilla.org	WARN	Loading extension 'screenshots@mozilla.org': Reading manifest: Invalid host permission: about:reader*
+
+(firefox:10401): Gtk-WARNING **: 22:27:16.646: Theme parsing error: <data>:1:34: Expected ')' in color definition
+
+(firefox:10401): Gtk-WARNING **: 22:27:16.646: Theme parsing error: <data>:1:77: Expected ')' in color definition
+1555000049343	Marionette	INFO	Listening on port 35471
+1555000049855	Marionette	WARN	TLS certificate errors will be ignored for this session
+JavaScript warning: https://my.sdu.edu.kz/common/general.js, line 597: unreachable code after return statement
+JavaScript warning: https://my.sdu.edu.kz/common/general.js, line 597: unreachable code after return statement
+1555000082915	Marionette	INFO	Stopped listening on port 38741
+[Parent 10401, Gecko_IOThread] WARNING: pipe error (88): Connection reset by peer: file /build/firefox-HN7tk_/firefox-65.0+build2/ipc/chromium/src/chrome/common/ipc_channel_posix.cc, line 349
+[Parent 10401, Gecko_IOThread] WARNING: pipe error (85): Connection reset by peer: file /build/firefox-HN7tk_/firefox-65.0+build2/ipc/chromium/src/chrome/common/ipc_channel_posix.cc, line 349
+1555000088719	Marionette	INFO	Stopped listening on port 35471
+[Parent 9535, Gecko_IOThread] WARNING: pipe error (79): Connection reset by peer: file /build/firefox-HN7tk_/firefox-65.0+build2/ipc/chromium/src/chrome/common/ipc_channel_posix.cc, line 349
+[Parent 9535, Gecko_IOThread] WARNING: pipe error (97): Connection reset by peer: file /build/firefox-HN7tk_/firefox-65.0+build2/ipc/chromium/src/chrome/common/ipc_channel_posix.cc, line 349
+1555000091602	Marionette	INFO	Stopped listening on port 37833
+1555000095572	Marionette	INFO	Stopped listening on port 46771
+1555000096878	Marionette	INFO	Stopped listening on port 43467
+1555000097928	Marionette	INFO	Stopped listening on port 41561
+1555000098223	Marionette	INFO	Stopped listening on port 34609
+[Parent 8418, Gecko_IOThread] WARNING: pipe error (86): Connection reset by peer: file /build/firefox-HN7tk_/firefox-65.0+build2/ipc/chromium/src/chrome/common/ipc_channel_posix.cc, line 349
+[Parent 8418, Gecko_IOThread] WARNING: pipe error (78): Connection reset by peer: file /build/firefox-HN7tk_/firefox-65.0+build2/ipc/chromium/src/chrome/common/ipc_channel_posix.cc, line 349
+1555000100292	Marionette	INFO	Stopped listening on port 43955
+1555000102176	Marionette	INFO	Stopped listening on port 33207
+1555000103648	Marionette	INFO	Stopped listening on port 37119
+1555000105321	Marionette	INFO	Stopped listening on port 36715
+1555000107177	Marionette	INFO	Stopped listening on port 35863
+1555000108561	Marionette	INFO	Stopped listening on port 45935
+1555000109529	Marionette	INFO	Stopped listening on port 43109
+1555000111644	Marionette	INFO	Stopped listening on port 46691
+1555000112772	Marionette	INFO	Stopped listening on port 36321
+1555000113496	Marionette	INFO	Stopped listening on port 36599
+1555003304314	mozrunner::runner	INFO	Running command: "/usr/bin/firefox" "-marionette" "-foreground" "-no-remote" "-profile" "/tmp/rust_mozprofile.8FoGumEOV5CN"
+1555003306502	addons.webextension.screenshots@mozilla.org	WARN	Loading extension 'screenshots@mozilla.org': Reading manifest: Invalid host permission: resource://pdf.js/
+1555003306502	addons.webextension.screenshots@mozilla.org	WARN	Loading extension 'screenshots@mozilla.org': Reading manifest: Invalid host permission: about:reader*
+
+(firefox:11788): Gtk-WARNING **: 23:21:47.319: Theme parsing error: <data>:1:34: Expected ')' in color definition
+
+(firefox:11788): Gtk-WARNING **: 23:21:47.319: Theme parsing error: <data>:1:77: Expected ')' in color definition
+1555003310442	Marionette	INFO	Listening on port 34169
+1555003310546	Marionette	WARN	TLS certificate errors will be ignored for this session
+JavaScript warning: https://my.sdu.edu.kz/common/general.js, line 597: unreachable code after return statement
+JavaScript warning: https://my.sdu.edu.kz/common/general.js, line 597: unreachable code after return statement
+1555003321068	mozrunner::runner	INFO	Running command: "/usr/bin/firefox" "-marionette" "-foreground" "-no-remote" "-profile" "/tmp/rust_mozprofile.jAcG0XnIoPxI"
+1555003321506	addons.webextension.screenshots@mozilla.org	WARN	Loading extension 'screenshots@mozilla.org': Reading manifest: Invalid host permission: resource://pdf.js/
+1555003321507	addons.webextension.screenshots@mozilla.org	WARN	Loading extension 'screenshots@mozilla.org': Reading manifest: Invalid host permission: about:reader*
+
+(firefox:12079): Gtk-WARNING **: 23:22:02.013: Theme parsing error: <data>:1:34: Expected ')' in color definition
+
+(firefox:12079): Gtk-WARNING **: 23:22:02.013: Theme parsing error: <data>:1:77: Expected ')' in color definition
+1555003324660	Marionette	INFO	Listening on port 37951
+1555003324711	Marionette	WARN	TLS certificate errors will be ignored for this session
+JavaScript warning: https://my.sdu.edu.kz/common/general.js, line 597: unreachable code after return statement
+console.error: BroadcastService: 
+  receivedBroadcastMessage: handler for
+  remote-settings/monitor_changes
+  threw error:
+  Message: Error: Polling for changes failed: NetworkError when attempting to fetch resource..
+  Stack:
+    remoteSettingsFunction/remoteSettings.pollChanges@resource://services-settings/remote-settings.js:188:13
+
+JavaScript warning: https://my.sdu.edu.kz/common/general.js, line 597: unreachable code after return statement
+1555003334673	mozrunner::runner	INFO	Running command: "/usr/bin/firefox" "-marionette" "-foreground" "-no-remote" "-profile" "/tmp/rust_mozprofile.0yHxIyqqXGxf"
+1555003335089	addons.webextension.screenshots@mozilla.org	WARN	Loading extension 'screenshots@mozilla.org': Reading manifest: Invalid host permission: resource://pdf.js/
+1555003335089	addons.webextension.screenshots@mozilla.org	WARN	Loading extension 'screenshots@mozilla.org': Reading manifest: Invalid host permission: about:reader*
+
+(firefox:12351): Gtk-WARNING **: 23:22:15.621: Theme parsing error: <data>:1:34: Expected ')' in color definition
+
+(firefox:12351): Gtk-WARNING **: 23:22:15.621: Theme parsing error: <data>:1:77: Expected ')' in color definition
+1555003338592	Marionette	INFO	Listening on port 35547
+1555003338687	Marionette	WARN	TLS certificate errors will be ignored for this session
+JavaScript warning: https://my.sdu.edu.kz/common/general.js, line 597: unreachable code after return statement
+console.error: BroadcastService: 
+  receivedBroadcastMessage: handler for
+  remote-settings/monitor_changes
+  threw error:
+  Message: Error: Polling for changes failed: NetworkError when attempting to fetch resource..
+  Stack:
+    remoteSettingsFunction/remoteSettings.pollChanges@resource://services-settings/remote-settings.js:188:13
+
+JavaScript warning: https://my.sdu.edu.kz/common/general.js, line 597: unreachable code after return statement
+console.error: BroadcastService: 
+  receivedBroadcastMessage: handler for
+  remote-settings/monitor_changes
+  threw error:
+  Message: Error: Polling for changes failed: NetworkError when attempting to fetch resource..
+  Stack:
+    remoteSettingsFunction/remoteSettings.pollChanges@resource://services-settings/remote-settings.js:188:13
+
+Exiting due to channel error.
+Exiting due to channel error.
+[GFX1-]: Receive IPC close with reason=AbnormalShutdown
+[GFX1-]: Receive IPC close with reason=AbnormalShutdown
+[Child 11971, Chrome_ChildThread] WARNING: pipe error (3): Connection reset by peer: file /build/firefox-HN7tk_/firefox-65.0+build2/ipc/chromium/src/chrome/common/ipc_channel_posix.cc, line 349
+Exiting due to channel error.
+[Child 12490, Chrome_ChildThread] WARNING: pipe error (3): Connection reset by peer: file /build/firefox-HN7tk_/firefox-65.0+build2/ipc/chromium/src/chrome/common/ipc_channel_posix.cc, line 349
+Exiting due to channel error.
+[GFX1-]: Receive IPC close with reason=AbnormalShutdown
+[Child 11942, Chrome_ChildThread] WARNING: pipe error (3): Connection reset by peer: file /build/firefox-HN7tk_/firefox-65.0+build2/ipc/chromium/src/chrome/common/ipc_channel_posix.cc, line 349
+Exiting due to channel error.
+[GFX1-]: Receive IPC close with reason=AbnormalShutdown
+[Child 12467, Chrome_ChildThread] WARNING: pipe error (3): Connection reset by peer: file /build/firefox-HN7tk_/firefox-65.0+build2/ipc/chromium/src/chrome/common/ipc_channel_posix.cc, line 349
+Exiting due to channel error.
+[GFX1-]: Receive IPC close with reason=AbnormalShutdown
+[Child 12300, Chrome_ChildThread] WARNING: pipe error (3): Connection reset by peer: file /build/firefox-HN7tk_/firefox-65.0+build2/ipc/chromium/src/chrome/common/ipc_channel_posix.cc, line 349
+Exiting due to channel error.
+[GFX1-]: Receive IPC close with reason=AbnormalShutdown
+[Child 12240, Chrome_ChildThread] WARNING: pipe error (3): Connection reset by peer: file /build/firefox-HN7tk_/firefox-65.0+build2/ipc/chromium/src/chrome/common/ipc_channel_posix.cc, line 349
+Exiting due to channel error.
+Exiting due to channel error.
+1555003427683	mozrunner::runner	INFO	Running command: "/usr/bin/firefox" "-marionette" "-foreground" "-no-remote" "-profile" "/tmp/rust_mozprofile.xtPXzhYKgWDQ"
+1555003428097	addons.webextension.screenshots@mozilla.org	WARN	Loading extension 'screenshots@mozilla.org': Reading manifest: Invalid host permission: resource://pdf.js/
+1555003428097	addons.webextension.screenshots@mozilla.org	WARN	Loading extension 'screenshots@mozilla.org': Reading manifest: Invalid host permission: about:reader*
+
+(firefox:12654): Gtk-WARNING **: 23:23:48.675: Theme parsing error: <data>:1:34: Expected ')' in color definition
+
+(firefox:12654): Gtk-WARNING **: 23:23:48.675: Theme parsing error: <data>:1:77: Expected ')' in color definition
+1555003431662	Marionette	INFO	Listening on port 44339
+1555003431697	Marionette	WARN	TLS certificate errors will be ignored for this session
+JavaScript warning: https://my.sdu.edu.kz/common/general.js, line 597: unreachable code after return statement
+JavaScript warning: https://my.sdu.edu.kz/common/general.js, line 597: unreachable code after return statement
+1555003443495	mozrunner::runner	INFO	Running command: "/usr/bin/firefox" "-marionette" "-foreground" "-no-remote" "-profile" "/tmp/rust_mozprofile.7tE9LlMt3vCY"
+1555003443910	addons.webextension.screenshots@mozilla.org	WARN	Loading extension 'screenshots@mozilla.org': Reading manifest: Invalid host permission: resource://pdf.js/
+1555003443910	addons.webextension.screenshots@mozilla.org	WARN	Loading extension 'screenshots@mozilla.org': Reading manifest: Invalid host permission: about:reader*
+
+(firefox:12921): Gtk-WARNING **: 23:24:04.490: Theme parsing error: <data>:1:34: Expected ')' in color definition
+
+(firefox:12921): Gtk-WARNING **: 23:24:04.490: Theme parsing error: <data>:1:77: Expected ')' in color definition
+1555003447124	Marionette	INFO	Listening on port 38279
+1555003447207	Marionette	WARN	TLS certificate errors will be ignored for this session
+JavaScript warning: https://my.sdu.edu.kz/common/general.js, line 597: unreachable code after return statement
+console.error: BroadcastService: 
+  receivedBroadcastMessage: handler for
+  remote-settings/monitor_changes
+  threw error:
+  Message: Error: Polling for changes failed: NetworkError when attempting to fetch resource..
+  Stack:
+    remoteSettingsFunction/remoteSettings.pollChanges@resource://services-settings/remote-settings.js:188:13
+
+JavaScript warning: https://my.sdu.edu.kz/common/general.js, line 597: unreachable code after return statement
+1555003458903	mozrunner::runner	INFO	Running command: "/usr/bin/firefox" "-marionette" "-foreground" "-no-remote" "-profile" "/tmp/rust_mozprofile.Hz9wOr7s94nM"
+1555003459364	addons.webextension.screenshots@mozilla.org	WARN	Loading extension 'screenshots@mozilla.org': Reading manifest: Invalid host permission: resource://pdf.js/
+1555003459364	addons.webextension.screenshots@mozilla.org	WARN	Loading extension 'screenshots@mozilla.org': Reading manifest: Invalid host permission: about:reader*
+
+(firefox:13184): Gtk-WARNING **: 23:24:19.996: Theme parsing error: <data>:1:34: Expected ')' in color definition
+
+(firefox:13184): Gtk-WARNING **: 23:24:19.997: Theme parsing error: <data>:1:77: Expected ')' in color definition
+1555003462491	Marionette	INFO	Listening on port 33381
+1555003462553	Marionette	WARN	TLS certificate errors will be ignored for this session
+JavaScript warning: https://my.sdu.edu.kz/common/general.js, line 597: unreachable code after return statement
+console.error: BroadcastService: 
+  receivedBroadcastMessage: handler for
+  remote-settings/monitor_changes
+  threw error:
+  Message: Error: Polling for changes failed: NetworkError when attempting to fetch resource..
+  Stack:
+    remoteSettingsFunction/remoteSettings.pollChanges@resource://services-settings/remote-settings.js:188:13
+
+JavaScript warning: https://my.sdu.edu.kz/common/general.js, line 597: unreachable code after return statement
+Exiting due to channel error.
+Exiting due to channel error.
+[GFX1-]: Receive IPC close with reason=AbnormalShutdown
+[Child 13329, Chrome_ChildThread] WARNING: pipe error (3): Connection reset by peer: file /build/firefox-HN7tk_/firefox-65.0+build2/ipc/chromium/src/chrome/common/ipc_channel_posix.cc, line 349
+Exiting due to channel error.
+[GFX1-]: Receive IPC close with reason=AbnormalShutdown
+[Child 13126, Chrome_ChildThread] WARNING: pipe error (3): Connection reset by peer: file /build/firefox-HN7tk_/firefox-65.0+build2/ipc/chromium/src/chrome/common/ipc_channel_posix.cc, line 349
+Exiting due to channel error.
+[GFX1-]: Receive IPC close with reason=AbnormalShutdown
+[Child 13065, Chrome_ChildThread] WARNING: pipe error (3): Connection reset by peer: file /build/firefox-HN7tk_/firefox-65.0+build2/ipc/chromium/src/chrome/common/ipc_channel_posix.cc, line 349
+Exiting due to channel error.
+Exiting due to channel error.
+Exiting due to channel error.
+Exiting due to channel error.
+Exiting due to channel error.
+1555003563697	mozrunner::runner	INFO	Running command: "/usr/bin/firefox" "-marionette" "-foreground" "-no-remote" "-profile" "/tmp/rust_mozprofile.QlXh3lebIv7A"
+1555003564111	addons.webextension.screenshots@mozilla.org	WARN	Loading extension 'screenshots@mozilla.org': Reading manifest: Invalid host permission: resource://pdf.js/
+1555003564111	addons.webextension.screenshots@mozilla.org	WARN	Loading extension 'screenshots@mozilla.org': Reading manifest: Invalid host permission: about:reader*
+
+(firefox:13544): Gtk-WARNING **: 23:26:04.663: Theme parsing error: <data>:1:34: Expected ')' in color definition
+
+(firefox:13544): Gtk-WARNING **: 23:26:04.664: Theme parsing error: <data>:1:77: Expected ')' in color definition
+1555003567019	Marionette	INFO	Listening on port 42713
+1555003567117	Marionette	WARN	TLS certificate errors will be ignored for this session
+JavaScript warning: https://my.sdu.edu.kz/common/general.js, line 597: unreachable code after return statement
+JavaScript warning: https://my.sdu.edu.kz/common/general.js, line 597: unreachable code after return statement
+1555003578153	mozrunner::runner	INFO	Running command: "/usr/bin/firefox" "-marionette" "-foreground" "-no-remote" "-profile" "/tmp/rust_mozprofile.9wNb3V8pSoiF"
+1555003578573	addons.webextension.screenshots@mozilla.org	WARN	Loading extension 'screenshots@mozilla.org': Reading manifest: Invalid host permission: resource://pdf.js/
+1555003578573	addons.webextension.screenshots@mozilla.org	WARN	Loading extension 'screenshots@mozilla.org': Reading manifest: Invalid host permission: about:reader*
+
+(firefox:13798): Gtk-WARNING **: 23:26:19.174: Theme parsing error: <data>:1:34: Expected ')' in color definition
+
+(firefox:13798): Gtk-WARNING **: 23:26:19.174: Theme parsing error: <data>:1:77: Expected ')' in color definition
+1555003581526	Marionette	INFO	Listening on port 35937
+1555003581584	Marionette	WARN	TLS certificate errors will be ignored for this session
+JavaScript warning: https://my.sdu.edu.kz/common/general.js, line 597: unreachable code after return statement
+JavaScript warning: https://my.sdu.edu.kz/common/general.js, line 597: unreachable code after return statement
+1555003595989	mozrunner::runner	INFO	Running command: "/usr/bin/firefox" "-marionette" "-foreground" "-no-remote" "-profile" "/tmp/rust_mozprofile.cJ5nh3sj3X9O"
+1555003596420	addons.webextension.screenshots@mozilla.org	WARN	Loading extension 'screenshots@mozilla.org': Reading manifest: Invalid host permission: resource://pdf.js/
+1555003596420	addons.webextension.screenshots@mozilla.org	WARN	Loading extension 'screenshots@mozilla.org': Reading manifest: Invalid host permission: about:reader*
+
+(firefox:14052): Gtk-WARNING **: 23:26:37.052: Theme parsing error: <data>:1:34: Expected ')' in color definition
+
+(firefox:14052): Gtk-WARNING **: 23:26:37.052: Theme parsing error: <data>:1:77: Expected ')' in color definition
+1555003599706	Marionette	INFO	Listening on port 39205
+1555003599805	Marionette	WARN	TLS certificate errors will be ignored for this session
+JavaScript warning: https://my.sdu.edu.kz/common/general.js, line 597: unreachable code after return statement
+JavaScript warning: https://my.sdu.edu.kz/common/general.js, line 597: unreachable code after return statement
+JavaScript error: chrome://browser/content/browser-customization.js, line 165: NS_ERROR_NOT_INITIALIZED: 
+[Parent 13544, Gecko_IOThread] WARNING: pipe error (78): Connection reset by peer: file /build/firefox-HN7tk_/firefox-65.0+build2/ipc/chromium/src/chrome/common/ipc_channel_posix.cc, line 349
+[Parent 13544, Gecko_IOThread] WARNING: pipe error (70): Connection reset by peer: file /build/firefox-HN7tk_/firefox-65.0+build2/ipc/chromium/src/chrome/common/ipc_channel_posix.cc, line 349
+1555003705005	Marionette	INFO	Stopped listening on port 42713
+[Parent 14052, Gecko_IOThread] WARNING: pipe error (78): Connection reset by peer: file /build/firefox-HN7tk_/firefox-65.0+build2/ipc/chromium/src/chrome/common/ipc_channel_posix.cc, line 349
+[Parent 14052, Gecko_IOThread] WARNING: pipe error (86): Connection reset by peer: file /build/firefox-HN7tk_/firefox-65.0+build2/ipc/chromium/src/chrome/common/ipc_channel_posix.cc, line 349
+1555003707442	Marionette	INFO	Stopped listening on port 39205
+1555003708540	Marionette	INFO	Stopped listening on port 35937
+1555064557614	mozrunner::runner	INFO	Running command: "/usr/bin/firefox" "-marionette" "-headless" "-foreground" "-no-remote" "-profile" "/tmp/rust_mozprofile.B6QfpxoJMDZS"
+*** You are running in headless mode.
+1555064558032	addons.webextension.screenshots@mozilla.org	WARN	Loading extension 'screenshots@mozilla.org': Reading manifest: Invalid host permission: resource://pdf.js/
+1555064558032	addons.webextension.screenshots@mozilla.org	WARN	Loading extension 'screenshots@mozilla.org': Reading manifest: Invalid host permission: about:reader*
+1555064561320	Marionette	INFO	Listening on port 34719
+1555064561371	Marionette	WARN	TLS certificate errors will be ignored for this session
+JavaScript warning: https://my.sdu.edu.kz/common/general.js, line 597: unreachable code after return statement
+JavaScript warning: https://my.sdu.edu.kz/common/general.js, line 597: unreachable code after return statement
+1555064572526	mozrunner::runner	INFO	Running command: "/usr/bin/firefox" "-marionette" "-headless" "-foreground" "-no-remote" "-profile" "/tmp/rust_mozprofile.5lJWXgQONlXw"
+*** You are running in headless mode.
+1555064572951	addons.webextension.screenshots@mozilla.org	WARN	Loading extension 'screenshots@mozilla.org': Reading manifest: Invalid host permission: resource://pdf.js/
+1555064572951	addons.webextension.screenshots@mozilla.org	WARN	Loading extension 'screenshots@mozilla.org': Reading manifest: Invalid host permission: about:reader*
+1555064575831	Marionette	INFO	Listening on port 45667
+1555064575838	Marionette	WARN	TLS certificate errors will be ignored for this session
+JavaScript warning: https://my.sdu.edu.kz/common/general.js, line 597: unreachable code after return statement
+console.error: BroadcastService: 
+  receivedBroadcastMessage: handler for
+  remote-settings/monitor_changes
+  threw error:
+  Message: Error: Polling for changes failed: NetworkError when attempting to fetch resource..
+  Stack:
+    remoteSettingsFunction/remoteSettings.pollChanges@resource://services-settings/remote-settings.js:188:13
+
+JavaScript warning: https://my.sdu.edu.kz/common/general.js, line 597: unreachable code after return statement
+1555064584550	mozrunner::runner	INFO	Running command: "/usr/bin/firefox" "-marionette" "-headless" "-foreground" "-no-remote" "-profile" "/tmp/rust_mozprofile.kAK8Vl8HHJiN"
+*** You are running in headless mode.
+1555064584934	addons.webextension.screenshots@mozilla.org	WARN	Loading extension 'screenshots@mozilla.org': Reading manifest: Invalid host permission: resource://pdf.js/
+1555064584934	addons.webextension.screenshots@mozilla.org	WARN	Loading extension 'screenshots@mozilla.org': Reading manifest: Invalid host permission: about:reader*
+1555064587686	Marionette	INFO	Listening on port 36143
+1555064587759	Marionette	WARN	TLS certificate errors will be ignored for this session
+JavaScript warning: https://my.sdu.edu.kz/common/general.js, line 597: unreachable code after return statement
+JavaScript warning: https://my.sdu.edu.kz/common/general.js, line 597: unreachable code after return statement
+console.error: BroadcastService: 
+  receivedBroadcastMessage: handler for
+  remote-settings/monitor_changes
+  threw error:
+  Message: Error: Polling for changes failed: NetworkError when attempting to fetch resource..
+  Stack:
+    remoteSettingsFunction/remoteSettings.pollChanges@resource://services-settings/remote-settings.js:188:13
+
+Exiting due to channel error.
+Exiting due to channel error.
+[GFX1-]: Receive IPC close with reason=AbnormalShutdown
+[GFX1-]: Receive IPC close with reason=AbnormalShutdown
+[Child 5061, Chrome_ChildThread] WARNING: pipe error (3): Connection reset by peer: file /build/firefox-HN7tk_/firefox-65.0+build2/ipc/chromium/src/chrome/common/ipc_channel_posix.cc, line 349
+Exiting due to channel error.
+[GFX1-]: Receive IPC close with reason=AbnormalShutdown
+[Child 5347, Chrome_ChildThread] WARNING: pipe error (3): Connection reset by peer: file /build/firefox-HN7tk_/firefox-65.0+build2/ipc/chromium/src/chrome/common/ipc_channel_posix.cc, line 349
+Exiting due to channel error.
+Exiting due to channel error.
+Exiting due to channel error.
+Exiting due to channel error.
+Exiting due to channel error.
+Sandbox: Unexpected EOF, op 0 flags 00 path /usr/share/locale/kk/LC_MESSAGES/libc.mo
+[Child 5406, Chrome_ChildThread] WARNING: pipe error (3): Connection reset by peer: file /build/firefox-HN7tk_/firefox-65.0+build2/ipc/chromium/src/chrome/common/ipc_channel_posix.cc, line 349
+Exiting due to channel error.
+1555064648588	mozrunner::runner	INFO	Running command: "/usr/bin/firefox" "-marionette" "-headless" "-foreground" "-no-remote" "-profile" "/tmp/rust_mozprofile.zjwpkOemBKcH"
+*** You are running in headless mode.
+1555064648971	addons.webextension.screenshots@mozilla.org	WARN	Loading extension 'screenshots@mozilla.org': Reading manifest: Invalid host permission: resource://pdf.js/
+1555064648971	addons.webextension.screenshots@mozilla.org	WARN	Loading extension 'screenshots@mozilla.org': Reading manifest: Invalid host permission: about:reader*
+1555064651768	Marionette	INFO	Listening on port 41319
+1555064651797	Marionette	WARN	TLS certificate errors will be ignored for this session
+JavaScript warning: https://my.sdu.edu.kz/common/general.js, line 597: unreachable code after return statement
+JavaScript warning: https://my.sdu.edu.kz/common/general.js, line 597: unreachable code after return statement
+1555064661850	mozrunner::runner	INFO	Running command: "/usr/bin/firefox" "-marionette" "-headless" "-foreground" "-no-remote" "-profile" "/tmp/rust_mozprofile.HAz9eptHqWja"
+*** You are running in headless mode.
+1555064662234	addons.webextension.screenshots@mozilla.org	WARN	Loading extension 'screenshots@mozilla.org': Reading manifest: Invalid host permission: resource://pdf.js/
+1555064662235	addons.webextension.screenshots@mozilla.org	WARN	Loading extension 'screenshots@mozilla.org': Reading manifest: Invalid host permission: about:reader*
+1555064665153	Marionette	INFO	Listening on port 42263
+1555064665160	Marionette	WARN	TLS certificate errors will be ignored for this session
+JavaScript warning: https://my.sdu.edu.kz/common/general.js, line 597: unreachable code after return statement
+JavaScript warning: https://my.sdu.edu.kz/common/general.js, line 597: unreachable code after return statement
+1555064673352	mozrunner::runner	INFO	Running command: "/usr/bin/firefox" "-marionette" "-headless" "-foreground" "-no-remote" "-profile" "/tmp/rust_mozprofile.ZpCITXMMmR6E"
+console.error: BroadcastService: 
+  receivedBroadcastMessage: handler for
+  remote-settings/monitor_changes
+  threw error:
+  Message: Error: Polling for changes failed: NetworkError when attempting to fetch resource..
+  Stack:
+    remoteSettingsFunction/remoteSettings.pollChanges@resource://services-settings/remote-settings.js:188:13
+
+*** You are running in headless mode.
+1555064673772	addons.webextension.screenshots@mozilla.org	WARN	Loading extension 'screenshots@mozilla.org': Reading manifest: Invalid host permission: resource://pdf.js/
+1555064673772	addons.webextension.screenshots@mozilla.org	WARN	Loading extension 'screenshots@mozilla.org': Reading manifest: Invalid host permission: about:reader*
+1555064676604	Marionette	INFO	Listening on port 41639
+1555064676662	Marionette	WARN	TLS certificate errors will be ignored for this session
+JavaScript warning: https://my.sdu.edu.kz/common/general.js, line 597: unreachable code after return statement
+JavaScript warning: https://my.sdu.edu.kz/common/general.js, line 597: unreachable code after return statement
+1555064686187	mozrunner::runner	INFO	Running command: "/usr/bin/firefox" "-marionette" "-headless" "-foreground" "-no-remote" "-profile" "/tmp/rust_mozprofile.8Pbh7ZvilUqo"
+*** You are running in headless mode.
+1555064686679	addons.webextension.screenshots@mozilla.org	WARN	Loading extension 'screenshots@mozilla.org': Reading manifest: Invalid host permission: resource://pdf.js/
+1555064686679	addons.webextension.screenshots@mozilla.org	WARN	Loading extension 'screenshots@mozilla.org': Reading manifest: Invalid host permission: about:reader*
+console.error: BroadcastService: 
+  receivedBroadcastMessage: handler for
+  remote-settings/monitor_changes
+  threw error:
+  Message: Error: Polling for changes failed: NetworkError when attempting to fetch resource..
+  Stack:
+    remoteSettingsFunction/remoteSettings.pollChanges@resource://services-settings/remote-settings.js:188:13
+
+1555064689730	Marionette	INFO	Listening on port 32953
+1555064689798	Marionette	WARN	TLS certificate errors will be ignored for this session
+JavaScript warning: https://my.sdu.edu.kz/common/general.js, line 597: unreachable code after return statement
+console.error: BroadcastService: 
+  receivedBroadcastMessage: handler for
+  remote-settings/monitor_changes
+  threw error:
+  Message: Error: Polling for changes failed: NetworkError when attempting to fetch resource..
+  Stack:
+    remoteSettingsFunction/remoteSettings.pollChanges@resource://services-settings/remote-settings.js:188:13
+
+JavaScript warning: https://my.sdu.edu.kz/common/general.js, line 597: unreachable code after return statement
+1555064700616	mozrunner::runner	INFO	Running command: "/usr/bin/firefox" "-marionette" "-headless" "-foreground" "-no-remote" "-profile" "/tmp/rust_mozprofile.MavIE0fx71w8"
+*** You are running in headless mode.
+1555064701008	addons.webextension.screenshots@mozilla.org	WARN	Loading extension 'screenshots@mozilla.org': Reading manifest: Invalid host permission: resource://pdf.js/
+1555064701008	addons.webextension.screenshots@mozilla.org	WARN	Loading extension 'screenshots@mozilla.org': Reading manifest: Invalid host permission: about:reader*
+1555064703961	Marionette	INFO	Listening on port 46589
+1555064704042	Marionette	WARN	TLS certificate errors will be ignored for this session
+JavaScript warning: https://my.sdu.edu.kz/common/general.js, line 597: unreachable code after return statement
+console.error: BroadcastService: 
+  receivedBroadcastMessage: handler for
+  remote-settings/monitor_changes
+  threw error:
+  Message: Error: Polling for changes failed: NetworkError when attempting to fetch resource..
+  Stack:
+    remoteSettingsFunction/remoteSettings.pollChanges@resource://services-settings/remote-settings.js:188:13
+
+JavaScript warning: https://my.sdu.edu.kz/common/general.js, line 597: unreachable code after return statement
+1555064713161	mozrunner::runner	INFO	Running command: "/usr/bin/firefox" "-marionette" "-headless" "-foreground" "-no-remote" "-profile" "/tmp/rust_mozprofile.fBC86VE9Jfg5"
+*** You are running in headless mode.
+1555064713550	addons.webextension.screenshots@mozilla.org	WARN	Loading extension 'screenshots@mozilla.org': Reading manifest: Invalid host permission: resource://pdf.js/
+1555064713551	addons.webextension.screenshots@mozilla.org	WARN	Loading extension 'screenshots@mozilla.org': Reading manifest: Invalid host permission: about:reader*
+1555064716437	Marionette	INFO	Listening on port 42551
+1555064716497	Marionette	WARN	TLS certificate errors will be ignored for this session
+JavaScript warning: https://my.sdu.edu.kz/common/general.js, line 597: unreachable code after return statement
+console.error: BroadcastService: 
+  receivedBroadcastMessage: handler for
+  remote-settings/monitor_changes
+  threw error:
+  Message: Error: Polling for changes failed: NetworkError when attempting to fetch resource..
+  Stack:
+    remoteSettingsFunction/remoteSettings.pollChanges@resource://services-settings/remote-settings.js:188:13
+
+JavaScript warning: https://my.sdu.edu.kz/common/general.js, line 597: unreachable code after return statement
+1555064727963	mozrunner::runner	INFO	Running command: "/usr/bin/firefox" "-marionette" "-headless" "-foreground" "-no-remote" "-profile" "/tmp/rust_mozprofile.9jP6ZXdvMgoC"
+*** You are running in headless mode.
+1555064728360	addons.webextension.screenshots@mozilla.org	WARN	Loading extension 'screenshots@mozilla.org': Reading manifest: Invalid host permission: resource://pdf.js/
+1555064728360	addons.webextension.screenshots@mozilla.org	WARN	Loading extension 'screenshots@mozilla.org': Reading manifest: Invalid host permission: about:reader*
+1555064731430	Marionette	INFO	Listening on port 41913
+1555064731480	Marionette	WARN	TLS certificate errors will be ignored for this session
+JavaScript warning: https://my.sdu.edu.kz/common/general.js, line 597: unreachable code after return statement
+console.error: BroadcastService: 
+  receivedBroadcastMessage: handler for
+  remote-settings/monitor_changes
+  threw error:
+  Message: Error: Polling for changes failed: NetworkError when attempting to fetch resource..
+  Stack:
+    remoteSettingsFunction/remoteSettings.pollChanges@resource://services-settings/remote-settings.js:188:13
+
+JavaScript warning: https://my.sdu.edu.kz/common/general.js, line 597: unreachable code after return statement
+1555064741573	mozrunner::runner	INFO	Running command: "/usr/bin/firefox" "-marionette" "-headless" "-foreground" "-no-remote" "-profile" "/tmp/rust_mozprofile.L4yEkzRtxmAj"
+*** You are running in headless mode.
+1555064742208	addons.webextension.screenshots@mozilla.org	WARN	Loading extension 'screenshots@mozilla.org': Reading manifest: Invalid host permission: resource://pdf.js/
+1555064742209	addons.webextension.screenshots@mozilla.org	WARN	Loading extension 'screenshots@mozilla.org': Reading manifest: Invalid host permission: about:reader*
+1555064745884	Marionette	INFO	Listening on port 38899
+1555064745947	Marionette	WARN	TLS certificate errors will be ignored for this session
+JavaScript warning: https://my.sdu.edu.kz/common/general.js, line 597: unreachable code after return statement
+console.error: BroadcastService: 
+  receivedBroadcastMessage: handler for
+  remote-settings/monitor_changes
+  threw error:
+  Message: Error: Polling for changes failed: NetworkError when attempting to fetch resource..
+  Stack:
+    remoteSettingsFunction/remoteSettings.pollChanges@resource://services-settings/remote-settings.js:188:13
+
+JavaScript warning: https://my.sdu.edu.kz/common/general.js, line 597: unreachable code after return statement
+1555064755826	mozrunner::runner	INFO	Running command: "/usr/bin/firefox" "-marionette" "-headless" "-foreground" "-no-remote" "-profile" "/tmp/rust_mozprofile.TZiDNG2tA4H2"
+*** You are running in headless mode.
+1555064756632	addons.webextension.screenshots@mozilla.org	WARN	Loading extension 'screenshots@mozilla.org': Reading manifest: Invalid host permission: resource://pdf.js/
+1555064756633	addons.webextension.screenshots@mozilla.org	WARN	Loading extension 'screenshots@mozilla.org': Reading manifest: Invalid host permission: about:reader*
+1555064760431	Marionette	INFO	Listening on port 45549
+1555064760451	Marionette	WARN	TLS certificate errors will be ignored for this session
+JavaScript warning: https://my.sdu.edu.kz/common/general.js, line 597: unreachable code after return statement
+console.error: BroadcastService: 
+  receivedBroadcastMessage: handler for
+  remote-settings/monitor_changes
+  threw error:
+  Message: Error: Polling for changes failed: NetworkError when attempting to fetch resource..
+  Stack:
+    remoteSettingsFunction/remoteSettings.pollChanges@resource://services-settings/remote-settings.js:188:13
+
+JavaScript warning: https://my.sdu.edu.kz/common/general.js, line 597: unreachable code after return statement
+1555064768995	mozrunner::runner	INFO	Running command: "/usr/bin/firefox" "-marionette" "-headless" "-foreground" "-no-remote" "-profile" "/tmp/rust_mozprofile.j8lm9jMbAJwZ"
+*** You are running in headless mode.
+1555064769524	addons.webextension.screenshots@mozilla.org	WARN	Loading extension 'screenshots@mozilla.org': Reading manifest: Invalid host permission: resource://pdf.js/
+1555064769525	addons.webextension.screenshots@mozilla.org	WARN	Loading extension 'screenshots@mozilla.org': Reading manifest: Invalid host permission: about:reader*
+1555064775206	Marionette	INFO	Listening on port 38787
+1555064775229	Marionette	WARN	TLS certificate errors will be ignored for this session
+JavaScript warning: https://my.sdu.edu.kz/common/general.js, line 597: unreachable code after return statement
+console.error: BroadcastService: 
+  receivedBroadcastMessage: handler for
+  remote-settings/monitor_changes
+  threw error:
+  Message: Error: Polling for changes failed: NetworkError when attempting to fetch resource..
+  Stack:
+    remoteSettingsFunction/remoteSettings.pollChanges@resource://services-settings/remote-settings.js:188:13
+
+JavaScript warning: https://my.sdu.edu.kz/common/general.js, line 597: unreachable code after return statement
+1555064785170	mozrunner::runner	INFO	Running command: "/usr/bin/firefox" "-marionette" "-headless" "-foreground" "-no-remote" "-profile" "/tmp/rust_mozprofile.kluOvTSrVBOA"
+*** You are running in headless mode.
+1555064785947	addons.webextension.screenshots@mozilla.org	WARN	Loading extension 'screenshots@mozilla.org': Reading manifest: Invalid host permission: resource://pdf.js/
+1555064785947	addons.webextension.screenshots@mozilla.org	WARN	Loading extension 'screenshots@mozilla.org': Reading manifest: Invalid host permission: about:reader*
+1555064790823	Marionette	INFO	Listening on port 40263
+1555064790935	Marionette	WARN	TLS certificate errors will be ignored for this session
+JavaScript warning: https://my.sdu.edu.kz/common/general.js, line 597: unreachable code after return statement
+console.error: BroadcastService: 
+  receivedBroadcastMessage: handler for
+  remote-settings/monitor_changes
+  threw error:
+  Message: Error: Polling for changes failed: NetworkError when attempting to fetch resource..
+  Stack:
+    remoteSettingsFunction/remoteSettings.pollChanges@resource://services-settings/remote-settings.js:188:13
+
+JavaScript warning: https://my.sdu.edu.kz/common/general.js, line 597: unreachable code after return statement
+1555064801187	mozrunner::runner	INFO	Running command: "/usr/bin/firefox" "-marionette" "-headless" "-foreground" "-no-remote" "-profile" "/tmp/rust_mozprofile.3GYn45lQyjwQ"
+*** You are running in headless mode.
+1555064801674	addons.webextension.screenshots@mozilla.org	WARN	Loading extension 'screenshots@mozilla.org': Reading manifest: Invalid host permission: resource://pdf.js/
+1555064801674	addons.webextension.screenshots@mozilla.org	WARN	Loading extension 'screenshots@mozilla.org': Reading manifest: Invalid host permission: about:reader*
+1555064806698	Marionette	INFO	Listening on port 38563
+1555064806710	Marionette	WARN	TLS certificate errors will be ignored for this session
+JavaScript warning: https://my.sdu.edu.kz/common/general.js, line 597: unreachable code after return statement
+console.error: BroadcastService: 
+  receivedBroadcastMessage: handler for
+  remote-settings/monitor_changes
+  threw error:
+  Message: Error: Polling for changes failed: NetworkError when attempting to fetch resource..
+  Stack:
+    remoteSettingsFunction/remoteSettings.pollChanges@resource://services-settings/remote-settings.js:188:13
+
+JavaScript warning: https://my.sdu.edu.kz/common/general.js, line 597: unreachable code after return statement
+1555064815333	mozrunner::runner	INFO	Running command: "/usr/bin/firefox" "-marionette" "-headless" "-foreground" "-no-remote" "-profile" "/tmp/rust_mozprofile.fUk4o2fDEKDw"
+*** You are running in headless mode.
+1555064815788	addons.webextension.screenshots@mozilla.org	WARN	Loading extension 'screenshots@mozilla.org': Reading manifest: Invalid host permission: resource://pdf.js/
+1555064815788	addons.webextension.screenshots@mozilla.org	WARN	Loading extension 'screenshots@mozilla.org': Reading manifest: Invalid host permission: about:reader*
+1555064822539	Marionette	INFO	Listening on port 39319
+1555064822638	Marionette	WARN	TLS certificate errors will be ignored for this session
+console.error: BroadcastService: 
+  receivedBroadcastMessage: handler for
+  remote-settings/monitor_changes
+  threw error:
+  Message: Error: Polling for changes failed: NetworkError when attempting to fetch resource..
+  Stack:
+    remoteSettingsFunction/remoteSettings.pollChanges@resource://services-settings/remote-settings.js:188:13
+
+JavaScript warning: https://my.sdu.edu.kz/common/general.js, line 597: unreachable code after return statement
+JavaScript warning: https://my.sdu.edu.kz/common/general.js, line 597: unreachable code after return statement
+1555064833981	mozrunner::runner	INFO	Running command: "/usr/bin/firefox" "-marionette" "-headless" "-foreground" "-no-remote" "-profile" "/tmp/rust_mozprofile.G4R6Kj1YJiVe"
+*** You are running in headless mode.
+1555064836136	addons.webextension.screenshots@mozilla.org	WARN	Loading extension 'screenshots@mozilla.org': Reading manifest: Invalid host permission: resource://pdf.js/
+1555064836457	addons.webextension.screenshots@mozilla.org	WARN	Loading extension 'screenshots@mozilla.org': Reading manifest: Invalid host permission: about:reader*
+console.error: BroadcastService: 
+  receivedBroadcastMessage: handler for
+  remote-settings/monitor_changes
+  threw error:
+  Message: Error: Polling for changes failed: NetworkError when attempting to fetch resource..
+  Stack:
+    remoteSettingsFunction/remoteSettings.pollChanges@resource://services-settings/remote-settings.js:188:13
+
+1555064850815	Marionette	INFO	Listening on port 38431
+1555064851211	Marionette	WARN	TLS certificate errors will be ignored for this session
+JavaScript warning: https://my.sdu.edu.kz/common/general.js, line 597: unreachable code after return statement
+JavaScript warning: https://my.sdu.edu.kz/common/general.js, line 597: unreachable code after return statement
+1555064863029	mozrunner::runner	INFO	Running command: "/usr/bin/firefox" "-marionette" "-headless" "-foreground" "-no-remote" "-profile" "/tmp/rust_mozprofile.zw0kvTKXGUBH"
+*** You are running in headless mode.
+1555064864747	addons.webextension.screenshots@mozilla.org	WARN	Loading extension 'screenshots@mozilla.org': Reading manifest: Invalid host permission: resource://pdf.js/
+1555064864747	addons.webextension.screenshots@mozilla.org	WARN	Loading extension 'screenshots@mozilla.org': Reading manifest: Invalid host permission: about:reader*
+console.error: BroadcastService: 
+  receivedBroadcastMessage: handler for
+  remote-settings/monitor_changes
+  threw error:
+  Message: Error: Polling for changes failed: NetworkError when attempting to fetch resource..
+  Stack:
+    remoteSettingsFunction/remoteSettings.pollChanges@resource://services-settings/remote-settings.js:188:13
+
+1555064875625	Marionette	INFO	Listening on port 38213
+1555064875696	Marionette	WARN	TLS certificate errors will be ignored for this session
+JavaScript warning: https://my.sdu.edu.kz/common/general.js, line 597: unreachable code after return statement
+JavaScript warning: https://my.sdu.edu.kz/common/general.js, line 597: unreachable code after return statement
+1555064884061	mozrunner::runner	INFO	Running command: "/usr/bin/firefox" "-marionette" "-headless" "-foreground" "-no-remote" "-profile" "/tmp/rust_mozprofile.nA71kBzh8SJf"
+*** You are running in headless mode.
+1555064884904	addons.webextension.screenshots@mozilla.org	WARN	Loading extension 'screenshots@mozilla.org': Reading manifest: Invalid host permission: resource://pdf.js/
+1555064884910	addons.webextension.screenshots@mozilla.org	WARN	Loading extension 'screenshots@mozilla.org': Reading manifest: Invalid host permission: about:reader*
+console.error: BroadcastService: 
+  receivedBroadcastMessage: handler for
+  remote-settings/monitor_changes
+  threw error:
+  Message: Error: Polling for changes failed: NetworkError when attempting to fetch resource..
+  Stack:
+    remoteSettingsFunction/remoteSettings.pollChanges@resource://services-settings/remote-settings.js:188:13
+
+1555064906981	Marionette	INFO	Listening on port 43955
+1555064907023	Marionette	WARN	TLS certificate errors will be ignored for this session
+JavaScript warning: https://my.sdu.edu.kz/common/general.js, line 597: unreachable code after return statement
+JavaScript warning: https://my.sdu.edu.kz/common/general.js, line 597: unreachable code after return statement
+1555064926675	mozrunner::runner	INFO	Running command: "/usr/bin/firefox" "-marionette" "-headless" "-foreground" "-no-remote" "-profile" "/tmp/rust_mozprofile.1u3L6CtFvpEu"
+*** You are running in headless mode.
+console.error: BroadcastService: 
+  receivedBroadcastMessage: handler for
+  remote-settings/monitor_changes
+  threw error:
+  Message: Error: Polling for changes failed: NetworkError when attempting to fetch resource..
+  Stack:
+    remoteSettingsFunction/remoteSettings.pollChanges@resource://services-settings/remote-settings.js:188:13
+
+1555064931308	addons.webextension.screenshots@mozilla.org	WARN	Loading extension 'screenshots@mozilla.org': Reading manifest: Invalid host permission: resource://pdf.js/
+1555064931309	addons.webextension.screenshots@mozilla.org	WARN	Loading extension 'screenshots@mozilla.org': Reading manifest: Invalid host permission: about:reader*
+1555064940063	Marionette	INFO	Listening on port 43899
+1555064940089	Marionette	WARN	TLS certificate errors will be ignored for this session
+JavaScript warning: https://my.sdu.edu.kz/common/general.js, line 597: unreachable code after return statement
+JavaScript warning: https://my.sdu.edu.kz/common/general.js, line 597: unreachable code after return statement
+console.error: BroadcastService: 
+  receivedBroadcastMessage: handler for
+  remote-settings/monitor_changes
+  threw error:
+  Message: Error: Polling for changes failed: NetworkError when attempting to fetch resource..
+  Stack:
+    remoteSettingsFunction/remoteSettings.pollChanges@resource://services-settings/remote-settings.js:188:13
+
+[GFX1-]: Receive IPC close with reason=AbnormalShutdown
+[GFX1-]: Receive IPC close with reason=AbnormalShutdown
+[GFX1-]: Receive IPC close with reason=AbnormalShutdown
+[GFX1-]: Receive IPC close with reason=AbnormalShutdown
+[Child 9445, Chrome_ChildThread] WARNING: pipe error (3): Connection reset by peer: file /build/firefox-HN7tk_/firefox-65.0+build2/ipc/chromium/src/chrome/common/ipc_channel_posix.cc, line 349
+Exiting due to channel error.
+[Child 8448, Chrome_ChildThread] WARNING: pipe error (3): Connection reset by peer: file /build/firefox-HN7tk_/firefox-65.0+build2/ipc/chromium/src/chrome/common/ipc_channel_posix.cc, line 349
+Exiting due to channel error.
+Exiting due to channel error.
+[Child 9542, Chrome_ChildThread] WARNING: pipe error (3): Connection reset by peer: file /build/firefox-HN7tk_/firefox-65.0+build2/ipc/chromium/src/chrome/common/ipc_channel_posix.cc, line 349
+Exiting due to channel error.
+Exiting due to channel error.
+[GFX1-]: Receive IPC close with reason=AbnormalShutdown
+[Child 10145, Chrome_ChildThread] WARNING: pipe error (3): Connection reset by peer: file /build/firefox-HN7tk_/firefox-65.0+build2/ipc/chromium/src/chrome/common/ipc_channel_posix.cc, line 349
+Exiting due to channel error.
+[Child 8365, Chrome_ChildThread] WARNING: pipe error (3): Connection reset by peer: file /build/firefox-HN7tk_/firefox-65.0+build2/ipc/chromium/src/chrome/common/ipc_channel_posix.cc, line 349
+Exiting due to channel error.
+Exiting due to channel error.
+Exiting due to channel error.
+[GFX1-]: Receive IPC close with reason=AbnormalShutdown
+[GFX1-]: Receive IPC close with reason=AbnormalShutdown
+[GFX1-]: Receive IPC close with reason=AbnormalShutdown
+[Child 10453, Chrome_ChildThread] WARNING: pipe error (3): Connection reset by peer: file /build/firefox-HN7tk_/firefox-65.0+build2/ipc/chromium/src/chrome/common/ipc_channel_posix.cc, line 349
+Exiting due to channel error.
+[Child 8100, Chrome_ChildThread] WARNING: pipe error (3): Connection reset by peer: file /build/firefox-HN7tk_/firefox-65.0+build2/ipc/chromium/src/chrome/common/ipc_channel_posix.cc, line 349
+Exiting due to channel error.
+Exiting due to channel error.
+Exiting due to channel error.
+Exiting due to channel error.
+Exiting due to channel error.
+Exiting due to channel error.
+[GFX1-]: Receive IPC close with reason=AbnormalShutdown
+[Child 7818, Chrome_ChildThread] WARNING: pipe error (3): Connection reset by peer: file /build/firefox-HN7tk_/firefox-65.0+build2/ipc/chromium/src/chrome/common/ipc_channel_posix.cc, line 349
+Exiting due to channel error.
+Exiting due to channel error.
+Exiting due to channel error.
+[GFX1-]: Receive IPC close with reason=AbnormalShutdown
+Exiting due to channel error.
+Exiting due to channel error.
+[Child 7533, Chrome_ChildThread] WARNING: pipe error (3): Connection reset by peer: file /build/firefox-HN7tk_/firefox-65.0+build2/ipc/chromium/src/chrome/common/ipc_channel_posix.cc, line 349
+Exiting due to channel error.
+[GFX1-]: Receive IPC close with reason=AbnormalShutdown
+[GFX1-]: Receive IPC close with reason=AbnormalShutdown
+Exiting due to channel error.
+[Child 7271, Chrome_ChildThread] WARNING: pipe error (3): Connection reset by peer: file /build/firefox-HN7tk_/firefox-65.0+build2/ipc/chromium/src/chrome/common/ipc_channel_posix.cc, line 349
+Exiting due to channel error.
+Exiting due to channel error.
+Exiting due to channel error.
+Exiting due to channel error.
+[Child 7514, Chrome_ChildThread] WARNING: pipe error (3): Connection reset by peer: file /build/firefox-HN7tk_/firefox-65.0+build2/ipc/chromium/src/chrome/common/ipc_channel_posix.cc, line 349
+Exiting due to channel error.
+Exiting due to channel error.
+[GFX1-]: Receive IPC close with reason=AbnormalShutdown
+[Child 8075, Chrome_ChildThread] WARNING: pipe error (3): Connection reset by peer: file /build/firefox-HN7tk_/firefox-65.0+build2/ipc/chromium/src/chrome/common/ipc_channel_posix.cc, line 349
+Exiting due to channel error.
+Exiting due to channel error.
+[GFX1-]: Receive IPC close with reason=AbnormalShutdown
+[Child 7004, Chrome_ChildThread] WARNING: pipe error (3): Connection reset by peer: file /build/firefox-HN7tk_/firefox-65.0+build2/ipc/chromium/src/chrome/common/ipc_channel_posix.cc, line 349
+Exiting due to channel error.
+Exiting due to channel error.
+Exiting due to channel error.
+Exiting due to channel error.
+[GFX1-]: Receive IPC close with reason=AbnormalShutdown
+[Child 6239, Chrome_ChildThread] WARNING: pipe error (3): Connection reset by peer: file /build/firefox-HN7tk_/firefox-65.0+build2/ipc/chromium/src/chrome/common/ipc_channel_posix.cc, line 349
+Exiting due to channel error.
+[GFX1-]: Receive IPC close with reason=AbnormalShutdown
+[Child 6214, Chrome_ChildThread] WARNING: pipe error (3): Connection reset by peer: file /build/firefox-HN7tk_/firefox-65.0+build2/ipc/chromium/src/chrome/common/ipc_channel_posix.cc, line 349
+Exiting due to channel error.
+Exiting due to channel error.
+[GFX1-]: Receive IPC close with reason=AbnormalShutdown
+[Child 5974, Chrome_ChildThread] WARNING: pipe error (3): Connection reset by peer: file /build/firefox-HN7tk_/firefox-65.0+build2/ipc/chromium/src/chrome/common/ipc_channel_posix.cc, line 349
+Exiting due to channel error.
+[GFX1-]: Receive IPC close with reason=AbnormalShutdown
+[Child 5949, Chrome_ChildThread] WARNING: pipe error (3): Connection reset by peer: file /build/firefox-HN7tk_/firefox-65.0+build2/ipc/chromium/src/chrome/common/ipc_channel_posix.cc, line 349
+Exiting due to channel error.
+Exiting due to channel error.
+Exiting due to channel error.
+Exiting due to channel error.
+[GFX1-]: Receive IPC close with reason=AbnormalShutdown
+[Child 9179, Chrome_ChildThread] WARNING: pipe error (3): Connection reset by peer: file /build/firefox-HN7tk_/firefox-65.0+build2/ipc/chromium/src/chrome/common/ipc_channel_posix.cc, line 349
+Exiting due to channel error.
+Exiting due to channel error.
+Exiting due to channel error.
+Exiting due to channel error.
+Exiting due to channel error.
+[GFX1-]: Receive IPC close with reason=AbnormalShutdown
+[Child 8922, Chrome_ChildThread] WARNING: pipe error (3): Connection reset by peer: file /build/firefox-HN7tk_/firefox-65.0+build2/ipc/chromium/src/chrome/common/ipc_channel_posix.cc, line 349
+Exiting due to channel error.
+Exiting due to channel error.
+Exiting due to channel error.
