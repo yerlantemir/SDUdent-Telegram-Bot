@@ -110,7 +110,7 @@ def notify_on(bot,update):
 
 
 def notify_grades(bot_):
-    
+    print('I am working with headless browser!!!')
     while(True):
         
         db = Database()
