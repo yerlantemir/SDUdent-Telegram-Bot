@@ -6,7 +6,7 @@ import datetime
 import json
 from json import JSONEncoder
 from JsonUtils import DateTimeDecoder,DateTimeEncoder
-
+from selenium.webdriver.firefox.options import Options
 
 class Subject:
 
@@ -54,8 +54,9 @@ class Schedule:
         self.login()        
     
     def login(self):
-
-        self.driver = webdriver.Chrome()
+        self.options = Options()
+        self.options.headless = True
+        self.driver = webdriver.Chrome(options=self.options)
         self.driver.get('https://my.sdu.edu.kz/')
         self.driver.find_element_by_id("username").send_keys(self.username)
         self.driver.find_element_by_id("password").send_keys(self.password)
