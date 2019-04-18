@@ -71,6 +71,7 @@ def set_password(bot,update,args):
     send_message(bot,chat_id,'Password saved')
     
 
+
 def notify_on(bot,update):
     
     db = Database()
@@ -84,7 +85,6 @@ def notify_on(bot,update):
 
     username = crpt.decrypt(db.get(["users",chat_id,"username"]).val())
     password = crpt.decrypt(db.get(["users",chat_id,"password"]).val())
-    
 
     if(username == '' or password == ''):
         send_message(bot,chat_id,'You have not entered your login or password,please,firtsly use /set_sn and /set_p commands')
@@ -94,7 +94,8 @@ def notify_on(bot,update):
     
     try:
 
-        sc = Schedule(username,password)
+        sc = Schedule()
+        sc.login(username,password)
         db.set_data(["users",chat_id,"entered"],True)
 
     except NoSuchElementException:
@@ -110,7 +111,9 @@ def notify_on(bot,update):
 
 
 def notify_grades(bot_):
-    print('I am working with headless browser!!!')
+    
+    sc = Schedule()
+
     while(True):
         
         db = Database()
@@ -126,20 +129,24 @@ def notify_grades(bot_):
             chat_id = user[0]
             
             try:
-                sc = Schedule(st_id,password)
+                sc.clear()
+                sc.login(st_id,password)
             except NoSuchElementException:
                 continue
             
             if 'grades_data' not in user[-1].keys():
                 continue
+                
             old_grades = user[-1]['grades_data']
+
             new_grades = sc.get_grades_data()
-            sc.close_browser()
+            sc.quit()
+
             updates,appends = get_update_in_grades(old_grades,new_grades)
             notify_about_new_grade(bot_,appends,updates,new_grades,old_grades,chat_id)
-            db.set_data(["users",chat_id,"grades_data"],new_grades)
 
-        time.sleep(599)
+            db.set_data(["users",chat_id,"grades_data"],new_grades)
+        time.sleep(600)
 
 
 def notify_about_new_grade(bot_,appends,updates,new_grades,old_grades,chat_id):

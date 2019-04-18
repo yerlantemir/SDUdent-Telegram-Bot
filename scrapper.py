@@ -47,21 +47,27 @@ class SubjectEncoder(json.JSONEncoder):
 class Schedule:
 
     
-    def __init__(self,username,password):
+    def __init__(self):
 
-        self.username = username
-        self.password = password
-        self.login()        
-    
-    def login(self):
         self.options = Options()
-        self.options.headless = True
+        self.options.headless = True            
         self.driver = webdriver.Chrome(options=self.options)
         self.driver.get('https://my.sdu.edu.kz/')
-        self.driver.find_element_by_id("username").send_keys(self.username)
-        self.driver.find_element_by_id("password").send_keys(self.password)
+        
+
+    def login(self,username,password):
+        self.driver.find_element_by_id("username").send_keys(username)
+        self.driver.find_element_by_id("password").send_keys(password)
         self.driver.find_element_by_class_name("q-button").click()
         self.driver.find_element_by_css_selector(".leftLinks a[href^='?mod=grades'] ").click()
+    
+    def quit(self):
+        self.driver.find_element_by_css_selector(".leftLinks img[src^='images/lock_icon.png']").click()    
+        self.clear()
+
+    def clear(self):
+        self.driver.find_element_by_id("username").clear()
+        self.driver.find_element_by_id("password").clear()
 
     def close_browser(self):
         self.driver.close()
