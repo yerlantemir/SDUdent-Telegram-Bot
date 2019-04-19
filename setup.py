@@ -112,10 +112,10 @@ def notify_on(bot,update):
 
 def notify_grades(bot_):
     
-    sc = Schedule()
 
     while(True):
-        
+        sc = Schedule()
+
         db = Database()
         users = db.get(['users'])
         
@@ -146,6 +146,7 @@ def notify_grades(bot_):
             notify_about_new_grade(bot_,appends,updates,new_grades,old_grades,chat_id)
 
             db.set_data(["users",chat_id,"grades_data"],new_grades)
+            sc.quit()
         time.sleep(600)
 
 
@@ -154,7 +155,6 @@ def notify_about_new_grade(bot_,appends,updates,new_grades,old_grades,chat_id):
     grade_states = ['1st midterm','2nd midterm','final','average']
 
     if appends != 0:
-        print(updates,'updates:')
         for i in range(len(updates)):
 
             if len(updates[i]) != 0:
