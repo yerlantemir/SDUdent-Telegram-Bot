@@ -139,10 +139,12 @@ def notify_grades(bot_):
                 continue
                 
             old_grades = user[-1]['grades_data']
-
+            
             new_grades = sc.get_grades_data()
-            sc.quit()
-
+            try:
+                sc.quit()
+            except NoSuchElementException:
+                continue
             updates,appends = get_update_in_grades(old_grades,new_grades)
             notify_about_new_grade(bot_,appends,updates,new_grades,old_grades,chat_id)
 
