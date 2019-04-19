@@ -49,9 +49,7 @@ class Schedule:
     
     def __init__(self):
 
-        self.options = Options()
-        self.options.headless = True            
-        self.driver = webdriver.Chrome(options=self.options)
+        self.driver = webdriver.Chrome()
         self.driver.get('https://my.sdu.edu.kz/')
         
 
