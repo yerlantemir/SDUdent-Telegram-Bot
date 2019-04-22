@@ -130,8 +130,10 @@ def notify_grades(bot_):
             chat_id = user[0]
             
             try:
+            
                 sc.clear()
                 sc.login(st_id,password)
+            
             except NoSuchElementException:
                 continue
             
@@ -141,6 +143,7 @@ def notify_grades(bot_):
             old_grades = user[-1]['grades_data']
             
             new_grades = sc.get_grades_data()
+
             try:
                 sc.quit()
             except NoSuchElementException:
