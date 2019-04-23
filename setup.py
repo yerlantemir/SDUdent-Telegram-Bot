@@ -116,7 +116,7 @@ def notify_grades(bot_):
     while(True):
 
         sc = Schedule()
-
+        print('I AM WORKING !!!')
         db = Database()
         users = db.get(['users'])
         
