@@ -112,47 +112,49 @@ def notify_on(bot,update):
 
 def notify_grades(bot_):
     
+    sc = Schedule()
 
     while(True):
 
-        sc = Schedule()
         print('I AM WORKING !!!')
         db = Database()
         users = db.get(['users'])
         
         for user in list(users.val().items()):
             
-            if 'entered' not in user[-1].keys():
+            if 'entered' not in user[-1].keys() or 'grades_data' not in user[-1].keys():
                 continue
 
-            st_id = crpt.decrypt(user[-1]['username'])
-            password = crpt.decrypt(user[-1]['password'])
-            chat_id = user[0]
-            
+                
             try:
-            
+    
+                st_id = crpt.decrypt(user[-1]['username'])
+                password = crpt.decrypt(user[-1]['password'])
+                chat_id = user[0]
+                
                 sc.clear()
                 sc.login(st_id,password)
             
-            except NoSuchElementException:
-                continue
             
-            if 'grades_data' not in user[-1].keys():
-                continue
+            
                 
-            old_grades = user[-1]['grades_data']
+                old_grades = user[-1]['grades_data']
+
+                new_grades = sc.get_grades_data()
+
             
-            new_grades = sc.get_grades_data()
-
-            try:
                 sc.quit()
-            except NoSuchElementException:
-                continue
-            updates,appends = get_update_in_grades(old_grades,new_grades)
-            notify_about_new_grade(bot_,appends,updates,new_grades,old_grades,chat_id)
+            
 
-            db.set_data(["users",chat_id,"grades_data"],new_grades)
-        sc.close_browser()
+                updates,appends = get_update_in_grades(old_grades,new_grades)
+                notify_about_new_grade(bot_,appends,updates,new_grades,old_grades,chat_id)
+
+                db.set_data(["users",chat_id,"grades_data"],new_grades)
+            
+            except:
+                print('Error occured')
+                pass
+                
         time.sleep(600)
 
 

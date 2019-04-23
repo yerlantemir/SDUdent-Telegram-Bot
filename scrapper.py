@@ -44,11 +44,15 @@ class SubjectEncoder(json.JSONEncoder):
             return o.__dict__
         return json.JSONEncoder.default(self, o)
 
+
 class Schedule:
 
     
     def __init__(self):
-        self.driver = webdriver.Chrome()
+        
+        self.options = Options()
+        self.options.add_argument("--headless")
+        self.driver = webdriver.Chrome(chrome_options=self.options)
         self.driver.get('https://my.sdu.edu.kz/')
         
 
