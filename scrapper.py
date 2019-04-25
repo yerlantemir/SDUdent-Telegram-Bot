@@ -7,7 +7,7 @@ import json
 from json import JSONEncoder
 from JsonUtils import DateTimeDecoder,DateTimeEncoder
 from selenium.webdriver.firefox.options import Options
-
+import time
 class Subject:
 
     def __init__(self,title,teacher_name,room,timeAtt):
@@ -60,10 +60,12 @@ class Schedule:
         self.driver.find_element_by_id("username").send_keys(username)
         self.driver.find_element_by_id("password").send_keys(password)
         self.driver.find_element_by_class_name("q-button").click()
+        time.sleep(1)
         self.driver.find_element_by_css_selector(".leftLinks a[href^='?mod=grades'] ").click()
     
     def quit(self):
         self.driver.find_element_by_css_selector(".leftLinks img[src^='images/lock_icon.png']").click()    
+        time.sleep(1)
         self.clear()
 
     def clear(self):
