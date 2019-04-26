@@ -8,6 +8,11 @@ from json import JSONEncoder
 from JsonUtils import DateTimeDecoder,DateTimeEncoder
 from selenium.webdriver.firefox.options import Options
 import time
+from selenium.webdriver.support.ui import WebDriverWait
+from selenium.webdriver.support import expected_conditions as EC
+from selenium.common.exceptions import TimeoutException
+from selenium.webdriver.common.by import By
+
 class Subject:
 
     def __init__(self,title,teacher_name,room,timeAtt):
@@ -18,7 +23,6 @@ class Subject:
         self.timeAtt = timeAtt.split(':')
         self.time = datetime.time(int(self.timeAtt[0]),int(self.timeAtt[1]),00)
         self.time = json.loads(json.dumps(self.time,cls = DateTimeEncoder),cls = DateTimeDecoder)
-    
     def json_serial(self,obj):
 
         if isinstance(obj, (datetime.datetime, datetime.time)):
@@ -54,21 +58,26 @@ class Schedule:
         self.options.add_argument("--headless")
         self.driver = webdriver.Chrome(chrome_options=self.options)
         self.driver.get('https://my.sdu.edu.kz/')
+        self.timeout = 4
         
 
     def login(self,username,password):
+
         self.driver.find_element_by_id("username").send_keys(username)
         self.driver.find_element_by_id("password").send_keys(password)
         self.driver.find_element_by_class_name("q-button").click()
-        time.sleep(1)
+
+        element_present = EC.presence_of_element_located((By.CSS_SELECTOR, ".leftLinks a[href^='?mod=grades'] "))
+        WebDriverWait(self.driver, self.timeout).until(element_present)
         self.driver.find_element_by_css_selector(".leftLinks a[href^='?mod=grades'] ").click()
     
     def quit(self):
         self.driver.find_element_by_css_selector(".leftLinks img[src^='images/lock_icon.png']").click()    
-        time.sleep(1)
         self.clear()
 
     def clear(self):
+        element_present = EC.presence_of_element_located((By.ID, "username"))
+        WebDriverWait(self.driver, self.timeout).until(element_present)
         self.driver.find_element_by_id("username").clear()
         self.driver.find_element_by_id("password").clear()
 

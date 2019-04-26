@@ -82,7 +82,7 @@ def notify_on(bot,update):
     if(bool(entered)):
         send_message(bot,chat_id,"I have already got your data,no need to call this command anymore")
         return
-
+    
     username = crpt.decrypt(db.get(["users",chat_id,"username"]).val())
     password = crpt.decrypt(db.get(["users",chat_id,"password"]).val())
 
@@ -123,11 +123,10 @@ def notify_grades(bot_):
         for user in list(users.val().items()):
             
             if 'entered' not in user[-1].keys() or 'grades_data' not in user[-1].keys():
-                continue
+                continue            
 
-                
             try:
-    
+
                 st_id = crpt.decrypt(user[-1]['username'])
                 password = crpt.decrypt(user[-1]['password'])
                 chat_id = user[0]
@@ -135,9 +134,6 @@ def notify_grades(bot_):
                 sc.clear()
                 sc.login(st_id,password)
             
-            
-            
-                
                 old_grades = user[-1]['grades_data']
 
                 new_grades = sc.get_grades_data()
@@ -155,7 +151,7 @@ def notify_grades(bot_):
                 print('Error occured')
                 pass
                 
-        time.sleep(600)
+        time.sleep(200)
 
 
 def notify_about_new_grade(bot_,appends,updates,new_grades,old_grades,chat_id):
