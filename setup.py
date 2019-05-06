@@ -130,20 +130,25 @@ def notify_grades(bot_):
                 st_id = crpt.decrypt(user[-1]['username'])
                 password = crpt.decrypt(user[-1]['password'])
                 chat_id = user[0]
-                
+
                 sc.clear()
                 sc.login(st_id,password)
             
                 old_grades = user[-1]['grades_data']
 
                 new_grades = sc.get_grades_data()
+                
+                updates,appends = get_update_in_grades(old_grades,new_grades)
+                
+                notify_about_new_grade(bot_,appends,updates,new_grades,old_grades,chat_id)
 
-            
+                if appends != 0 :
+                
+                    sc.take_screenshot()
+                    send_photo(bot_,chat_id)
+
                 sc.quit()
             
-
-                updates,appends = get_update_in_grades(old_grades,new_grades)
-                notify_about_new_grade(bot_,appends,updates,new_grades,old_grades,chat_id)
 
                 db.set_data(["users",chat_id,"grades_data"],new_grades)
             
@@ -260,6 +265,13 @@ def main():
 def send_message(bot,chat_id,send_text):
     try:
         bot.send_message(chat_id = chat_id,text = send_text,parse_mode = 'HTML')
+    except:
+        print('No such chat id')
+
+
+def send_photo(bot,chat_id):
+    try:
+        bot.send_photo(chat_id = chat_id, photo = open('screen.png', 'rb'),pasre_mode = 'HTML')
     except:
         print('No such chat id')
 

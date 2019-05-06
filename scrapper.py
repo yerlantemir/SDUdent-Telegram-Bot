@@ -83,6 +83,9 @@ class Schedule:
 
     def close_browser(self):
         self.driver.close()
+
+    def take_screenshot(self):
+        self.driver.save_screenshot('screen.png')
         
     def get_grades_data(self):
         
