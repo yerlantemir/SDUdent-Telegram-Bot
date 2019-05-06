@@ -56,6 +56,7 @@ class Schedule:
         
         self.options = Options()
         self.options.add_argument("--headless")
+        self.driver.set_window_size(1080,800)
         self.driver = webdriver.Chrome(chrome_options=self.options)
         self.driver.get('https://my.sdu.edu.kz/')
         self.timeout = 4
