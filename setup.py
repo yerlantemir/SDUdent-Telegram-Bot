@@ -5,7 +5,7 @@ import datetime
 from scrapper import Schedule
 import time
 from Facade import BotFacade
-from selenium.common.exceptions import NoSuchElementException
+from selenium.common.exceptions import TimeoutException
 from database import Database
 import ast
 import AESencoder as crpt
@@ -98,7 +98,7 @@ def notify_on(bot,update):
         sc.login(username,password)
         db.set_data(["users",chat_id,"entered"],True)
 
-    except NoSuchElementException:
+    except TimeoutException:
 
         db.set_data(["users",chat_id,"entered"],False)
         send_message(bot,chat_id,'You entered incorrect username/password,so we could not get your schedule,try again!')
