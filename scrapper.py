@@ -1,5 +1,4 @@
 from selenium import webdriver
-import secret_data as sd
 from time import sleep
 from bs4 import BeautifulSoup
 import datetime
@@ -59,7 +58,7 @@ class Schedule:
         self.driver = webdriver.Chrome(chrome_options=self.options)
         self.driver.set_window_size(1080,800)
         self.driver.get('https://my.sdu.edu.kz/')
-        self.timeout = 4
+        self.timeout = 10
         
 
     def login(self,username,password):
@@ -67,7 +66,7 @@ class Schedule:
         self.driver.find_element_by_id("username").send_keys(username)
         self.driver.find_element_by_id("password").send_keys(password)
         self.driver.find_element_by_class_name("q-button").click()
-        
+
         element_present = EC.presence_of_element_located((By.CSS_SELECTOR, ".leftLinks a[href^='?mod=grades'] "))
         WebDriverWait(self.driver, self.timeout).until(element_present)
         self.driver.find_element_by_css_selector(".leftLinks a[href^='?mod=grades'] ").click()
