@@ -1,372 +1,192 @@
-from telegram.ext import Updater
-import logging
-from telegram.ext import CommandHandler,MessageHandler,Filters,ConversationHandler
-import datetime
-from scrapper import Schedule
-import time
+import torch
+import torch.nn.functional as F
+from telegram.ext import CommandHandler, MessageHandler, Filters, ConversationHandler
+from telegram.error import BadRequest
+from PIL import Image
+from parser import get_semester_data, get_user_info
 from Facade import BotFacade
-from selenium.common.exceptions import TimeoutException
-from database import Database
-import ast
-import AESencoder as crpt
-import os
-import threading
-
-def start(bot,update):
-    
-    chat_id = get_chat_id(update)
-    send_message(bot,chat_id,"Hi SDUdent!!"\
-                            "\n" \
-                            "\n" \
-                            "Follow giving instructions to get notifications about your grades and absences, which will change in portal."\
-                            "\n" \
-                            "\n" \
-                            "1)/set_sn your_student_number (ex: /set_sn 170103024)"\
-                            "\n" \
-                            "2)/set_p you_password (ex: /set_p kyzylorda1999)"
-                            "\n" \
-                            "3)/on (activate process)"
-                            "\n" \
-                            "\n" \
-                            "Type /help to show list of avaible commands" \
-                            "\n" \
-                            "\n" \
-                            "Good luck!")
+from model.utils import get_feature
+import AESencoder as encryptor
+import constants
+import database
+import messages
 
 
-def set_student_number(bot,update,args):
+def start(bot, update):
+    update.message.reply_text(messages.start_message)
+    return constants.LOGIN
 
-    db = Database()
-    chat_id = get_chat_id(update)
-    
+
+def set_student_number(bot, update, user_data):
+    update.message.reply_text(messages.password_message)
+    username = update.message.text
+    user_data['username'] = username
+    return constants.PASSWORD
+
+
+def set_student_password(bot, update, user_data):
+    password = update.message.text
+    username = user_data['username']
+    chat_id = update.message.chat_id
+
     try:
-    
-        username = args[0]
-    
-    except IndexError:
-
-        send_message(bot,chat_id,'You have not entered(example: /set_sn 170103024),please,try again')
-        return
-
-    username = crpt.encrypt(username)
-    db.set_data(["users",chat_id,"username"],username)
-    send_message(bot,chat_id,'Username saved')
-
-
-def set_password(bot,update,args):
-    db = Database()
-    chat_id = get_chat_id(update)
-    
-    try:
-        
-        password = args[0]
-
-    except IndexError:
-
-        send_message(bot,chat_id,'You have not entered you password(example: /set_p 170103024),please,try again')
-        return
-
-    password = crpt.encrypt(password)
-    db.set_data(["users",chat_id,"password"],password)
-    send_message(bot,chat_id,'Password saved')
-    
-
-
-def notify_on(bot,update):
-    
-    db = Database()
-    chat_id = get_chat_id(update)
-
-    entered = db.get(["users",chat_id,"entered"]).val()
-    
-    if(bool(entered)):
-        send_message(bot,chat_id,"I have already got your data,no need to call this command anymore")
-        return
-    
-    username = crpt.decrypt(db.get(["users",chat_id,"username"]).val())
-    password = crpt.decrypt(db.get(["users",chat_id,"password"]).val())
-
-    if(username == '' or password == ''):
-        send_message(bot,chat_id,'You have not entered your login or password,please,firtsly use /set_sn and /set_p commands')
-        return
-
-    send_message(bot,chat_id,'I am getting your grades data from portal,wait about 10 seconds')
-    
-    try:
-
-        sc = Schedule()
-        sc.login(username,password)
-        db.set_data(["users",chat_id,"entered"],True)
-
-    except TimeoutException:
-
-        db.set_data(["users",chat_id,"entered"],False)
-        send_message(bot,chat_id,'You entered incorrect username/password,so we could not get your schedule,try again!')
-        return
-    
-    grades_data = sc.get_grades_data()
-    sc.close_browser()
-    db.set_data(["users",chat_id,"grades_data"],grades_data)
-    send_message(bot,chat_id,'Yahooo! I did it! From now I will notify you about updated grades and absences!!')
+        grades_data = get_semester_data(username, password)
+        user_data['semester_data'] = grades_data
+        # takes user image's feature vector
+        user_info = get_user_info(username, password)
+        user_data['feature'] = user_info['feature']
+        user_data['name_surname'] = user_info['name_surname']
+        user_data['program'] = user_info['program']
+        user_data['chat_id'] = chat_id
+        encrypted_password = encryptor.encrypt(password)
+        user_data['password'] = encrypted_password
+        database.insert_user(user_data)
+        send_message(bot, chat_id, messages.done_message)
+    except ValueError:
+        send_message(bot, chat_id, messages.incorrect_data_message)
+        return constants.LOGIN
+    return ConversationHandler.END
 
 
 def notify_grades(bot_):
-    
-    sc = Schedule()
+    while True:
 
-    while(True):
+        for user in database.collection.find():
+            old_grades = user['semester_data']
+            chat_id = user['chat_id']
 
-        print('I AM WORKING !!!')
-        db = Database()
-        users = db.get(['users'])
-        
-        for user in list(users.val().items()):
-            
-            if 'entered' not in user[-1].keys() or 'grades_data' not in user[-1].keys():
-                continue            
+            encrypted_username = user['username']
+            encrypted_password = encryptor.decrypt(user['password'])
+            new_grades = get_new_grades(encrypted_username, encrypted_password)
 
-            try:
+            if new_grades is None:
+                print('CHANGED DATA', encrypted_username, encrypted_password)
+                continue
 
-                st_id = crpt.decrypt(user[-1]['username'])
-                password = crpt.decrypt(user[-1]['password'])
-                chat_id = user[0]
+            something_changed = False
+            for subject_name, grades in new_grades.items():
+                # RARE situation when user changed his subject
+                if subject_name not in old_grades:
+                    continue
 
-                sc.clear()
-                sc.login(st_id,password)
-            
-                old_grades = user[-1]['grades_data']
+                differences = grades.items() - old_grades[subject_name].items()
+                for difference in differences:
+                    something_changed = True
+                    # difference ex : ('average' :'85')
+                    changed_state = difference[0]  # difference[0] => 'average'
+                    changed_value = difference[1]  # difference[1] => '85'
+                    prev_value = old_grades[subject_name][changed_state]
+                    send_message(bot_, chat_id, f'{changed_state} by subject {subject_name} '
+                                                f'was changed from {prev_value} to {changed_value}')
 
-                new_grades = sc.get_grades_data()
-                
-                updates,appends = get_update_in_grades(old_grades,new_grades)
-                
-                notify_about_new_grade(bot_,appends,updates,new_grades,old_grades,chat_id)
-
-                if appends != 0 :
-                
-                    sc.take_screenshot()
-                    send_photo(bot_,chat_id)
-
-                sc.quit()
-            
-
-                db.set_data(["users",chat_id,"grades_data"],new_grades)
-            
-            except:
-                print('Error occured')
-                pass
-                
-        time.sleep(200)
+            if something_changed:
+                database.update_grades(chat_id, new_grades)
 
 
-def notify_about_new_grade(bot_,appends,updates,new_grades,old_grades,chat_id):
-    
-    grade_states = ['1st midterm','2nd midterm','final','average']
-
-    if appends != 0:
-        for i in range(len(updates)):
-
-            if len(updates[i]) != 0:
-
-                for k in range(len(updates[i])):
-
-                    subject_name = old_grades[updates[i][k]]['name']
-                    
-                    if i == 0:
-
-                        new = new_grades[updates[i][k]]['att']
-                        old = old_grades[updates[i][k]]['att']
-                        if old == '0':
-                            send_message(bot_,chat_id,'Absence count by subject \"{}\" was changed to {}'.format(subject_name,new))
-                        
-                        else:
-                            send_message(bot_,chat_id,'Absence count by subject \"{}\" was changed from {} to {}'.format
-                                (subject_name,old,new))
-                    else:
-                        
-                        new = new_grades[updates[i][k]]['grade'][grade_states[i-1]]
-                        old = old_grades[updates[i][k]]['grade'][grade_states[i-1]]
-                        print(new,old)
-                        if old == '':
-                            send_message(bot_,chat_id,'{} grade by subject \"{}\" : {}'.format(grade_states[i-1],subject_name,new))
-                        
-                        else:
-                            send_message(bot_,chat_id,'{} grade by subject \"{}\" was changed from {} to {}'.
-                                format(grade_states[i-1],subject_name,old,new))
+def get_new_grades(encrypted_username, encrypted_password):
+    try:
+        return get_semester_data(encrypted_username, encrypted_password)
+    except BadRequest:
+        return None
 
 
-                
-  
+def find_user_start(bot, update):
+    update.message.reply_text('Send me photo of person you want to find')
+    return constants.PHOTO
 
 
-# def get_schedule(bot,update,args):
+def find_user(bot, update, user_data):
 
-#     chat_id = get_chat_id(update)
-    
-#     try:
-        
-#         day = int(args[0])
+    photo_file = update.message.photo[-1].get_file()
+    photo_file.download('current_user_image.jpg')
+    current_image = Image.open('current_user_image.jpg').convert('RGB')
 
-#     except IndexError:
-#         send_message(bot,chat_id,'Your foggot to enter day(example: /get_schedule 2 ,to get tuesday\'s schedule),please,try again')
-#         return
-#     global db
-#     weekdays = db.get(["users",chat_id,"schedule_data"]).val()
-    
-#     for i in range(len(weekdays[day])):
-#         send_message(bot,chat_id,'{}){}'.format(i+1,weekdays[day][i]))
+    answer_feature = get_feature(current_image)
+    if not isinstance(answer_feature, torch.Tensor):
+        if answer_feature == -1:
+            send_message(bot, update.message.chat_id, 'No face detected')
+            return
+        if answer_feature == -2:
+            send_message(bot, update.message.chat_id, 'More than one face detected,please crop it')
+            return
+    max_sim = 0
+    sims = []
+    for user in database.collection.find():
+        if 'feature' not in user:
+            continue
+        user_vector = torch.tensor(user['feature'])
+        similarity = F.cosine_similarity(answer_feature, user_vector)
+        sims.append(similarity)
+        if similarity > max_sim:
+            max_sim = similarity
+            needed_user = user
+    if max_sim.item() < constants.THRESHOLD_SIMILARITY:
+        update.message.reply_text('No such user found!')
+    update.message.reply_text(f'this is {needed_user["name_surname"]} from {needed_user["program"]} , sim = {max_sim}')
+    return ConversationHandler.END
+
+
+def cancel(bot, update):
+    return ConversationHandler.END
 
 
 def unknown_command(bot, update):
-    send_message(bot,update.message.chat_id,'Unrecognized command. Say what?')
+    send_message(bot, update.message.chat_id, messages.what_message)
 
 
-def help(bot, update):
-    chat_id = get_chat_id(update)
-    send_message(bot,chat_id,"Avaible commands:"\
-                                "\n" \
-                                "\n" \
-                                "1. /set_sn - update student number" \
-                                "\n" \
-                                "2. /set_p - update password" \
-                                "\n" \
-                                "3. /on - start notifying " \
-                                "\n" \
-                                "4. /help - list of commands")
-
-
-
+def help_call(bot, update):
+    chat_id = update.message.chat_id
+    send_message(bot, chat_id, messages.help_message)
 
 
 def main():
-    
-    
     facade = BotFacade()
     updater = facade.getBot()
     dp = updater.dispatcher
 
-    thread = threading.Thread(target=notify_grades,args=(updater.bot,))
-    thread.start()
+    # thread = threading.Thread(target=notify_grades, args=(updater.bot,))
+    # thread.start()
 
-    dp.add_handler(CommandHandler('start',start))
-    dp.add_handler(CommandHandler('set_sn',set_student_number,pass_args=True))
-    dp.add_handler(CommandHandler('set_p',set_password,pass_args=True))
-    dp.add_handler(CommandHandler('on',notify_on))
-    dp.add_handler(CommandHandler('help', help))    
-    dp.add_handler(MessageHandler(Filters.command, unknown_command))
+    enter_conversation = ConversationHandler(
+
+        entry_points=[CommandHandler('start', start)],
+
+        states={
+            constants.LOGIN: [MessageHandler(Filters.text, set_student_number, pass_user_data=True)],
+            constants.PASSWORD: [MessageHandler(Filters.text, set_student_password, pass_user_data=True)]
+        },
+
+        fallbacks=[CommandHandler('cancel', cancel)]
+
+    )
+    photo_conversation = ConversationHandler(
+
+        entry_points=[CommandHandler('find_user', find_user_start)],
+
+        states={
+            constants.PHOTO: [MessageHandler(Filters.photo, find_user, pass_user_data=True)]
+        },
+        fallbacks=[CommandHandler('cancel', cancel)]
+
+    )
+    dp.add_handler(enter_conversation)
+    dp.add_handler(photo_conversation)
     updater.start_polling()
 
 
-
-
-
-
-
-def send_message(bot,chat_id,send_text):
+def send_message(bot, chat_id, send_text):
     try:
-        bot.send_message(chat_id = chat_id,text = send_text,parse_mode = 'HTML')
-    except:
+        bot.send_message(chat_id=chat_id, text=send_text, parse_mode='HTML')
+    except BadRequest:
         print('No such chat id')
 
 
-def send_photo(bot,chat_id):
+def send_photo(bot, chat_id, file_path):
     try:
-        bot.send_photo(chat_id = chat_id, photo = open('screen.png', 'rb'),pasre_mode = 'HTML')
-    except:
+        bot.send_photo(chat_id=chat_id, photo=open(file_path, 'rb'), pasre_mode='HTML')
+    except BadRequest:
         print('No such chat id')
 
 
-
-
-def get_chat_id(update):
-    return update.message.chat_id
-
-
-def get_update_in_grades(old_grades,new_grades):
-    
-    appends = 0
-    updates = [[],[],[],[],[]]
-    grade_states = ['1st midterm','2nd midterm','final','average']       
-    for i in range(len(old_grades) or len(new_grades)):
-        
-        for k in range(0,4):
-            if old_grades[i]['grade'][grade_states[k]] != new_grades[i]['grade'][grade_states[k]]:
-                updates[k+1].append(i)
-                appends += 1
-        old_att = old_grades[i]['att']
-        new_att = new_grades[i]['att']
-
-        
-        if(old_att != new_att):
-            updates[0].append(i)
-            appends += 1
-    return updates,appends
-
-
-    
 if __name__ == '__main__':
     main()
-
-
-
-
-# def callback_get_time(bot,update):
-#     global dbsend_message
-#     chat_id = get_chat_id(update)
-    
-#     weekdays = db.get(["users",chat_id,"schedule_data"]).val()
-#     date = update.message.date
-#     time = datetime.time(date.hour,date.minute,date.second)
-#     weekday = date.isoweekday()
-    
-#     days = 0
-    
-#     if(weekday == 7):
-#         days = 1
-#         weekday = 1
-
-#     indexOfMin = closest_index(time,weekday,weekdays)
-    
-#     if days > 0:
-
-#         indexOfMin = 0
-
-#     next_lesson = ast.literal_eval(weekdays[weekday][indexOfMin])
-#     next_lesson_time = datetime.time(next_lesson['time']['hour'],next_lesson['time']['minute'],00)
-    
-#     next_lesson_date = datetime.datetime(date.year,
-#     date.month,date.day+days,next_lesson_time.hour,next_lesson_time.minute,00)
-
-#     bot.send_message(chat_id = update.message.chat_id , 
-#             text = 'Your next lesson is {}\nWhere?{}\nTeacher:{} \nuntil lesson:{}'.format(next_lesson['title']
-#                 ,next_lesson['room'],
-#                 next_lesson["teacher_name"],next_lesson_date - date))
-
-    
-    
-
-
-
-
-# def closest_index(time,weekday,weekdays):
-
-#     my_time_minutes = time.hour*60 + time.minute
-#     min = 24*60
-#     indexOfMin = 0
-
-#     for i in range(len(weekdays[weekday])):
-#         subjects = ast.literal_eval(weekdays[weekday][i])
-#         subject_time = subjects['time']
-#         minutes = subject_time['hour']*60+subject_time['minute']
-#         difference = minutes - my_time_minutes 
-
-#         if(difference < min and difference > 0):
-
-#             min = difference
-#             indexOfMin = i
-        
-
-#     return indexOfMin
-
-
-

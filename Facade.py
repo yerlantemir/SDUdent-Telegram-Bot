@@ -1,18 +1,19 @@
 import telebot
 import logging
-import secret_data as sd
+import os
 from telegram.ext import Updater
 
 
 class _Logger(object):
     def __init__(self):
         logging.basicConfig(format='%(asctime)s - %(name)s - %(levelname)s - %(message)s',
-                     level=logging.INFO)
+                            level=logging.INFO)
+        logging.getLogger("requests").setLevel(logging.WARNING)
 
 
 class _Bot(object):
     def __init__(self):
-        self.updater = Updater(token = sd.get_token())
+        self.updater = Updater(token=os.environ.get('BOT_TOKEN'))
 
     def startPolling(self):
         self.updater.start_polling()
@@ -22,7 +23,7 @@ class _Bot(object):
 
 
 class BotFacade(object):
-    
+
     def __init__(self):
         self.bot = _Bot()
         self.logger = _Logger()

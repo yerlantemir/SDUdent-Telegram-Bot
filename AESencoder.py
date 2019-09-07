@@ -1,16 +1,13 @@
-import Crypto.Random
-from Crypto.Cipher import AES
-import hashlib
+import os
 from cryptography.fernet import Fernet
-import secret_data as sd
 
-
-key = sd.get_key()
+key = os.environ.get("ECRYPTION_KEY")
 f = Fernet(key)
+
 
 def encrypt(message):
     return f.encrypt(message.encode()).decode()
 
+
 def decrypt(message):
     return f.decrypt(message.encode()).decode()
-
