@@ -1,4 +1,4 @@
-torch
+torch==1.2.0+cpu
 pymongo
 telegram
 lxml==4.2.5
@@ -7,5 +7,4 @@ pyTelegramBotAPI==3.6.6
 python-telegram-bot==11.1.0
 requests==2.11.1
 requests-toolbelt==0.7.0
-selenium==3.141.0
 urllib3==1.23

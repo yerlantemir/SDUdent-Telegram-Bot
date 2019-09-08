@@ -32,3 +32,9 @@ help_message = "Avaible commands:" \
                "4. /help - list of commands"
 
 what_message = 'Unrecognized command. Say what?'
+
+more_than_one_message = 'More than one face detected,please crop face of person you want to find,and send again!'
+
+no_face_message = 'There is no face in this picture!'
+
+not_subscribed_message = 'This person not subscribed to this bot!'

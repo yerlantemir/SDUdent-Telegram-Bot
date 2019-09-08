@@ -1,3 +1,4 @@
+import os
 import torch
 import torch.nn.functional as F
 from telegram.ext import CommandHandler, MessageHandler, Filters, ConversationHandler
@@ -95,34 +96,35 @@ def find_user_start(bot, update):
     return constants.PHOTO
 
 
-def find_user(bot, update, user_data):
-
+def find_user(bot, update):
+    chat_id = update.message.chat_id
     photo_file = update.message.photo[-1].get_file()
-    photo_file.download('current_user_image.jpg')
-    current_image = Image.open('current_user_image.jpg').convert('RGB')
+    file_path = chat_id + 'jpg'
+    photo_file.download(file_path)
+    current_image = Image.open(file_path).convert('RGB')
 
     answer_feature = get_feature(current_image)
     if not isinstance(answer_feature, torch.Tensor):
         if answer_feature == -1:
-            send_message(bot, update.message.chat_id, 'No face detected')
-            return
+            send_message(bot, chat_id, messages.no_face_message)
+            return ConversationHandler.END
         if answer_feature == -2:
-            send_message(bot, update.message.chat_id, 'More than one face detected,please crop it')
-            return
+            send_message(bot, chat_id, messages.more_than_one_message)
+            return ConversationHandler.END
     max_sim = 0
-    sims = []
     for user in database.collection.find():
         if 'feature' not in user:
             continue
         user_vector = torch.tensor(user['feature'])
         similarity = F.cosine_similarity(answer_feature, user_vector)
-        sims.append(similarity)
         if similarity > max_sim:
             max_sim = similarity
             needed_user = user
     if max_sim.item() < constants.THRESHOLD_SIMILARITY:
-        update.message.reply_text('No such user found!')
+        update.message.reply_text(messages.not_subscribed_message)
     update.message.reply_text(f'this is {needed_user["name_surname"]} from {needed_user["program"]} , sim = {max_sim}')
+
+    os.remove(file_path)
     return ConversationHandler.END
 
 
@@ -164,7 +166,7 @@ def main():
         entry_points=[CommandHandler('find_user', find_user_start)],
 
         states={
-            constants.PHOTO: [MessageHandler(Filters.photo, find_user, pass_user_data=True)]
+            constants.PHOTO: [MessageHandler(Filters.photo, find_user)]
         },
         fallbacks=[CommandHandler('cancel', cancel)]
 
