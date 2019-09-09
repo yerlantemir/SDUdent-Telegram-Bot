@@ -1,4 +1,4 @@
-pip3 install torch==1.2.0+cpu torchvision==0.4.0+cpu -f https://download.pytorch.org/whl/torch_stable.html
+pip3 torch==1.2.0+cpu torchvision==0.4.0+cpu -f https://download.pytorch.org/whl/torch_stable.html
 asn1crypto==0.24.0
 backcall==0.1.0
 certifi==2019.6.16
