@@ -2,6 +2,7 @@ import os
 import torch
 import torch.nn.functional as F
 from telegram.ext import CommandHandler, MessageHandler, Filters, ConversationHandler
+from telegram import (ReplyKeyboardMarkup, ReplyKeyboardRemove)
 from telegram.error import BadRequest
 from PIL import Image
 from parser import get_semester_data, get_user_info
@@ -29,7 +30,7 @@ def set_student_password(bot, update, user_data):
     password = update.message.text
     username = user_data['username']
     chat_id = update.message.chat_id
-
+    reply_keyboard = [['Yes', 'No']]
     try:
         grades_data = get_semester_data(username, password)
         user_data['semester_data'] = grades_data
@@ -42,11 +43,24 @@ def set_student_password(bot, update, user_data):
         encrypted_password = encryptor.encrypt(password)
         user_data['password'] = encrypted_password
         database.insert_user(user_data)
-        send_message(bot, chat_id, messages.done_message)
+        send_message(bot, chat_id, messages.done_message,
+                     reply_markup=ReplyKeyboardMarkup(reply_keyboard, one_time_keyboard=True, resize_keyboard=True))
+        return constants.ASK_DATA
     except ValueError:
         send_message(bot, chat_id, messages.incorrect_data_message)
         return constants.LOGIN
-    return ConversationHandler.END
+
+
+def ask_data(bot, update):
+    chat_id = update.message.chat_id
+    info_allow_state = update.message.text
+    if info_allow_state == "Yes":
+        info_allow_state = True
+    else:
+        info_allow_state = False
+    database.change_state(chat_id, info_allow_state)
+    current_state = 'Enabled' if info_allow_state else 'Disabled'
+    update.message.reply_text('Your info ' + current_state + '!', reply_markup=ReplyKeyboardRemove())
 
 
 def notify_grades(bot_):
@@ -99,33 +113,61 @@ def find_user_start(bot, update):
 def find_user(bot, update):
     chat_id = update.message.chat_id
     photo_file = update.message.photo[-1].get_file()
-    file_path = chat_id + 'jpg'
+    file_path = str(chat_id) + 'jpg'
     photo_file.download(file_path)
     current_image = Image.open(file_path).convert('RGB')
 
-    answer_feature = get_feature(current_image)
-    if not isinstance(answer_feature, torch.Tensor):
-        if answer_feature == -1:
-            send_message(bot, chat_id, messages.no_face_message)
-            return ConversationHandler.END
-        if answer_feature == -2:
-            send_message(bot, chat_id, messages.more_than_one_message)
-            return ConversationHandler.END
+    current_picture_feature = get_feature(current_image)
+    if not isinstance(current_picture_feature, torch.Tensor):
+        # no face detected
+        if current_picture_feature == -1:
+            return remove_file_and_stop_conversation(update, messages.no_face_message, file_path=file_path)
+        # more than one face was detected
+        if current_picture_feature == -2:
+            return remove_file_and_stop_conversation(update, messages.more_than_one_message, file_path=file_path)
+
+    needed_user, max_sim = get_needed_user(current_picture_feature)
+
+    if max_sim.item() < constants.THRESHOLD_SIMILARITY:
+        return remove_file_and_stop_conversation(update, messages.not_subscribed_message, file_path=file_path)
+
+    if 'info_allow_state' not in needed_user or not needed_user['info_allow_state']:
+        return remove_file_and_stop_conversation(update, messages.disabled_info_message, file_path=file_path)
+
+    text = messages.found_message(needed_user['name_surname'], needed_user['program'], max_sim)
+    return remove_file_and_stop_conversation(update, text, file_path=file_path)
+
+
+def get_needed_user(current_picture_feature):
     max_sim = 0
+
     for user in database.collection.find():
+
         if 'feature' not in user:
             continue
+
         user_vector = torch.tensor(user['feature'])
-        similarity = F.cosine_similarity(answer_feature, user_vector)
+        similarity = F.cosine_similarity(current_picture_feature, user_vector)
+
         if similarity > max_sim:
             max_sim = similarity
             needed_user = user
-    if max_sim.item() < constants.THRESHOLD_SIMILARITY:
-        update.message.reply_text(messages.not_subscribed_message)
-    update.message.reply_text(f'this is {needed_user["name_surname"]} from {needed_user["program"]} , sim = {max_sim}')
+    return needed_user, max_sim
 
+
+def remove_file_and_stop_conversation(update, text, file_path):
+    update.message.reply_text(text)
     os.remove(file_path)
     return ConversationHandler.END
+
+
+def change_state(bot, update):
+    chat_id = update.message.chat_id
+
+    prev_state = database.find_by_chat_id(chat_id)['info_allow_state']
+    database.change_state(chat_id, not prev_state)
+    current_state = 'Disabled' if prev_state else 'Enabled'
+    update.message.reply_text('Info ' + current_state + '!')
 
 
 def cancel(bot, update):
@@ -155,7 +197,8 @@ def main():
 
         states={
             constants.LOGIN: [MessageHandler(Filters.text, set_student_number, pass_user_data=True)],
-            constants.PASSWORD: [MessageHandler(Filters.text, set_student_password, pass_user_data=True)]
+            constants.PASSWORD: [MessageHandler(Filters.text, set_student_password, pass_user_data=True)],
+            constants.ASK_DATA: [MessageHandler(Filters.regex('^(Yes|No)$'), ask_data)]
         },
 
         fallbacks=[CommandHandler('cancel', cancel)]
@@ -171,14 +214,16 @@ def main():
         fallbacks=[CommandHandler('cancel', cancel)]
 
     )
+    change_state_handler = CommandHandler('change_state', change_state)
+    dp.add_handler(change_state_handler)
     dp.add_handler(enter_conversation)
     dp.add_handler(photo_conversation)
     updater.start_polling()
 
 
-def send_message(bot, chat_id, send_text):
+def send_message(bot, chat_id, send_text, reply_markup=None):
     try:
-        bot.send_message(chat_id=chat_id, text=send_text, parse_mode='HTML')
+        bot.send_message(chat_id=chat_id, text=send_text, parse_mode='HTML', reply_markup=reply_markup)
     except BadRequest:
         print('No such chat id')
 
