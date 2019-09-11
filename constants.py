@@ -34,7 +34,7 @@ XPATH_TABLE_BLOCK = '//table[@id="coursesTable"]'
 XPATH_TDS = './/td[@valign="top"]'
 
 
-LOGIN, PASSWORD = range(2)
+LOGIN, PASSWORD, ASK_DATA = range(3)
 
 PHOTO, ASK_INDEX = range(2)
 
