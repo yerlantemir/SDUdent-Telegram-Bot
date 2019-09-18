@@ -188,8 +188,8 @@ def main():
     updater = facade.getBot()
     dp = updater.dispatcher
 
-    # thread = threading.Thread(target=notify_grades, args=(updater.bot,))
-    # thread.start()
+    thread = threading.Thread(target=notify_grades, args=(updater.bot,))
+    thread.start()
 
     enter_conversation = ConversationHandler(
 
