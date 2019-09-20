@@ -36,7 +36,8 @@ XPATH_TDS = './/td[@valign="top"]'
 
 LOGIN, PASSWORD, ASK_DATA = range(3)
 
-PHOTO, ASK_INDEX = range(2)
+PHOTO, ASK_INDEX, EXIT= range(3)
 
+FEEDBACK = range(1)
 THRESHOLD_SIMILARITY = 0.6
 

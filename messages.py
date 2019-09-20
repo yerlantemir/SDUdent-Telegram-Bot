@@ -7,7 +7,7 @@ start_message = "Hi SDUdent!!" \
                 "To notify you about new grades,I need your student number and password from out portal" \
                 "\n" \
                 "\n" \
-                "Enter your login below:"
+                "Enter your student number below:"
 
 password_message = 'Now,enter your password:'
 wait_message = 'I am getting your grades data from portal,wait about 10 seconds'
@@ -15,7 +15,7 @@ wait_message = 'I am getting your grades data from portal,wait about 10 seconds'
 incorrect_data_message = 'You entered incorrect username/password,so I could not get your schedule,try again!' \
                          "\n" \
                          "\n" \
-                         "Enter your login below:"
+                         "Enter your student number below:"
 
 done_message = 'Yahooo! I did it! From now I will notify you about updated grades and absences!!' \
                "\n" \
@@ -43,6 +43,16 @@ not_subscribed_message = 'This person not subscribed to this bot!'
 
 disabled_info_message = 'This person disabled his information!'
 
+feedback_start_message = 'Write your feedback below:'
+
+send_photo_message = 'This is sdudent finder function,you can find sdudent\'s name and program by his picture!' \
+                      '\n'\
+                      '\n'\
+                     'Send me photo of person you want to find'
+
+thanks_message = 'Thanks for your feedback!'
+
+wait_searching_message = 'Wait about 10 seconds,I am searching for him!'
 
 def found_message(name_surname, program, probability):
-    return f'this is {name_surname} from {program} , sim = {probability}'
+    return f'this is <{name_surname}> from <{program}> , probability: {round(probability.item()*100)}%'

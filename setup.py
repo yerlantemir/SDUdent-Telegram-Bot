@@ -1,4 +1,5 @@
 import os
+import threading
 import torch
 import torch.nn.functional as F
 from telegram.ext import CommandHandler, MessageHandler, Filters, ConversationHandler
@@ -15,13 +16,19 @@ import messages
 
 
 def start(bot, update):
-    update.message.reply_text(messages.start_message)
+    reply_keyboard = [['CANCEL']]
+    update.message.reply_text(messages.start_message,
+                              reply_markup=ReplyKeyboardMarkup(reply_keyboard, one_time_keyboard=True,
+                                                               resize_keyboard=True))
     return constants.LOGIN
 
 
 def set_student_number(bot, update, user_data):
+    user_text = update.message.text
+    if user_text == 'CANCEL':
+        return ConversationHandler.END
     update.message.reply_text(messages.password_message)
-    username = update.message.text
+    username = user_text
     user_data['username'] = username
     return constants.PASSWORD
 
@@ -31,18 +38,16 @@ def set_student_password(bot, update, user_data):
     username = user_data['username']
     chat_id = update.message.chat_id
     reply_keyboard = [['Yes', 'No']]
+    send_message(bot, chat_id, messages.wait_message)
     try:
         grades_data = get_semester_data(username, password)
         user_data['semester_data'] = grades_data
         # takes user image's feature vector
         user_info = get_user_info(username, password)
-        user_data['feature'] = user_info['feature']
-        user_data['name_surname'] = user_info['name_surname']
-        user_data['program'] = user_info['program']
         user_data['chat_id'] = chat_id
         encrypted_password = encryptor.encrypt(password)
         user_data['password'] = encrypted_password
-        database.insert_user(user_data)
+        database.insert_user(user_data, user_info)
         send_message(bot, chat_id, messages.done_message,
                      reply_markup=ReplyKeyboardMarkup(reply_keyboard, one_time_keyboard=True, resize_keyboard=True))
         return constants.ASK_DATA
@@ -66,7 +71,7 @@ def ask_data(bot, update):
 def notify_grades(bot_):
     while True:
 
-        for user in database.collection.find():
+        for user in database.collection_grades.find():
             old_grades = user['semester_data']
             chat_id = user['chat_id']
 
@@ -106,17 +111,22 @@ def get_new_grades(encrypted_username, encrypted_password):
 
 
 def find_user_start(bot, update):
-    update.message.reply_text('Send me photo of person you want to find')
+    reply_keyboard = [['CANCEL']]
+    update.message.reply_text(messages.send_photo_message,
+                              reply_markup=ReplyKeyboardMarkup(reply_keyboard, one_time_keyboard=True,
+                                                               resize_keyboard=True))
     return constants.PHOTO
 
 
 def find_user(bot, update):
+    if update.message.text == 'CANCEL':
+        return ConversationHandler.END
+
     chat_id = update.message.chat_id
     photo_file = update.message.photo[-1].get_file()
     file_path = str(chat_id) + 'jpg'
     photo_file.download(file_path)
     current_image = Image.open(file_path).convert('RGB')
-
     current_picture_feature = get_feature(current_image)
     if not isinstance(current_picture_feature, torch.Tensor):
         # no face detected
@@ -126,6 +136,7 @@ def find_user(bot, update):
         if current_picture_feature == -2:
             return remove_file_and_stop_conversation(update, messages.more_than_one_message, file_path=file_path)
 
+    send_message(bot, chat_id, messages.wait_searching_message, reply_markup=ReplyKeyboardRemove())
     needed_user, max_sim = get_needed_user(current_picture_feature)
 
     if max_sim.item() < constants.THRESHOLD_SIMILARITY:
@@ -141,7 +152,7 @@ def find_user(bot, update):
 def get_needed_user(current_picture_feature):
     max_sim = 0
 
-    for user in database.collection.find():
+    for user in database.collection_features.find():
 
         if 'feature' not in user:
             continue
@@ -152,6 +163,7 @@ def get_needed_user(current_picture_feature):
         if similarity > max_sim:
             max_sim = similarity
             needed_user = user
+
     return needed_user, max_sim
 
 
@@ -168,6 +180,23 @@ def change_state(bot, update):
     database.change_state(chat_id, not prev_state)
     current_state = 'Disabled' if prev_state else 'Enabled'
     update.message.reply_text('Info ' + current_state + '!')
+
+
+def feedback_start(bot, update):
+    reply_keyboard = [['CANCEL']]
+    update.message.reply_text(messages.feedback_start_message,
+                              reply_markup=ReplyKeyboardMarkup(reply_keyboard, one_time_keyboard=True,
+                                                               resize_keyboard=True))
+    return constants.FEEDBACK
+
+
+def save_feedback(bot, update):
+    feedback_text = update.message.text
+    if feedback_text == 'CANCEL':
+        return ConversationHandler.END
+    chat_id = update.message.chat_id
+    database.add_feedback(chat_id, feedback_text)
+    update.message.reply_text(messages.thanks_message)
 
 
 def cancel(bot, update):
@@ -209,15 +238,28 @@ def main():
         entry_points=[CommandHandler('find_user', find_user_start)],
 
         states={
-            constants.PHOTO: [MessageHandler(Filters.photo, find_user)]
+            constants.PHOTO: [MessageHandler(Filters.photo | Filters.text, find_user)]
+        },
+        fallbacks=[CommandHandler('cancel', cancel)]
+
+    )
+    feedback_handler = ConversationHandler(
+
+        entry_points=[CommandHandler('feedback', feedback_start)],
+
+        states={
+            constants.FEEDBACK: [MessageHandler(Filters.text, save_feedback)],
+
+            constants.PHOTO: [MessageHandler(Filters.photo, find_user, pass_user_data=True)]
         },
         fallbacks=[CommandHandler('cancel', cancel)]
 
     )
     change_state_handler = CommandHandler('change_state', change_state)
-    dp.add_handler(change_state_handler)
     dp.add_handler(enter_conversation)
     dp.add_handler(photo_conversation)
+    dp.add_handler(change_state_handler)
+    dp.add_handler(feedback_handler)
     updater.start_polling()
 
 

@@ -55,7 +55,6 @@ def get_user_info(username, password):
 
     response = login(username, password, for_picture=True)
     tree = html.fromstring(response.content)
-    print(response.content)
     pic = tree.xpath("//img[@alt='Student']")[0]
     url = f'https://my.sdu.edu.kz/{pic.values()[0]}'
     resp = urllib.request.urlopen(url)
