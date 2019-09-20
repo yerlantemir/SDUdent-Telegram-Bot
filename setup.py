@@ -179,7 +179,8 @@ def change_state(bot, update):
     prev_state = database.find_by_chat_id(chat_id)['info_allow_state']
     database.change_state(chat_id, not prev_state)
     current_state = 'Disabled' if prev_state else 'Enabled'
-    update.message.reply_text('Info ' + current_state + '!')
+    current_state2 = 'Enable' if prev_state else 'Disable'
+    update.message.reply_text('Info ' + current_state + '! Call this command again to ' + current_state2)
 
 
 def feedback_start(bot, update):

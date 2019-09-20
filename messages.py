@@ -46,13 +46,29 @@ disabled_info_message = 'This person disabled his information!'
 feedback_start_message = 'Write your feedback below:'
 
 send_photo_message = 'This is sdudent finder function,you can find sdudent\'s name and program by his picture!' \
-                      '\n'\
-                      '\n'\
-                     'Send me photo of person you want to find'
+                     'However if you don\'t want to be found by another user,just call /change_state and I will update'\
+                     'your status of privacy' \
+                     '\n' \
+                     '\n' \
+                     'Send me photo of person you want to find:'
 
 thanks_message = 'Thanks for your feedback!'
 
 wait_searching_message = 'Wait about 10 seconds,I am searching for him!'
 
+to_all_users_message = 'Hello sdudent! I am back and glad to tell you that there are some updates!' \
+                       '\n' \
+                       '\n' \
+                       '1.There is a new option which can help you find someone from sdu by his/her picture' \
+                       'Call /find_user command and test it out!' \
+                       '\n' \
+                       '\n' \
+                       '2.If you have any wishes or found an error,' \
+                       'please write me about it by calling /feedback command.' \
+                       '\n' \
+                       '\n' \
+                       '3.Bot became more user-friendly,so share info about me with friends!'
+
+
 def found_message(name_surname, program, probability):
-    return f'this is <{name_surname}> from <{program}> , probability: {round(probability.item()*100)}%'
+    return f'this is <{name_surname}> from <{program}> , probability: {round(probability.item() * 100)}%'
