@@ -41,6 +41,10 @@ This is self learning project aimed to make life of students of my university ea
 
 	 This is how our portal looks like,from this page get user's photo,full name,program . Pass user's photo through pretrained model and get feature vector , data(feature_vector,full_name,program) in database.
 
+     <p align="center">
+	    <img width="100" src="images/myscreen.png">
+	</p>
+
 	 When another user calls `/find_user` command and send photo, get feature vector of sent photo and compare with all other user's photo's feature vector by cosine similarity
 	 <p align="center">
 	    <img width="100" src="images/cos_sim.png">
