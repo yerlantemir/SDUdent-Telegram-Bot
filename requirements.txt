@@ -7,7 +7,7 @@ boto3==1.9.225
 botocore==1.12.225
 certifi==2019.6.16
 cffi==1.12.3
-cryptography==2.7
+cryptography==3.2
 decorator==4.4.0
 docutils==0.15.2
 future==0.17.1
