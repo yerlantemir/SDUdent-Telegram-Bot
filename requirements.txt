@@ -24,7 +24,7 @@ Markdown==3.0.1
 more-itertools==7.2.0
 Naked==0.1.31
 numpy==1.17.0
-opencv-python-headless==4.1.1.26
+opencv-python-headless==4.2.0.32
 parso==0.5.1
 pexpect==4.7.0
 pickleshare==0.7.5
