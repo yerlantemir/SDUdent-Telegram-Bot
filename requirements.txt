@@ -5,7 +5,7 @@ asn1crypto==0.24.0
 backcall==0.1.0
 boto3==1.9.225
 botocore==1.12.225
-certifi==2019.6.16
+certifi==2022.12.7
 cffi==1.12.3
 cryptography==2.7
 decorator==4.4.0
